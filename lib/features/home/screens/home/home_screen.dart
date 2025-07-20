@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../category/category_screen.dart';
 import '../favorites/favorites_screen.dart';
 import 'dart:math';
+import '../../../calculator/screens/calculator_screen.dart';
 // import 'package:auto_size_text/auto_size_text.dart';
 
 class HomeScreen extends ConsumerWidget {
@@ -141,11 +142,17 @@ class CategoryCard extends StatelessWidget {
           splashColor: Colors.blueAccent.withOpacity(0.08),
           highlightColor: Colors.blueAccent.withOpacity(0.04),
           onTap: () {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (_) => CategoryScreen(category: category),
-              ),
-            );
+            if (category.id == 'calculator') {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (_) => const CalculatorScreen()),
+              );
+            } else {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (_) => CategoryScreen(category: category),
+                ),
+              );
+            }
           },
           child: Container(
             decoration: BoxDecoration(
