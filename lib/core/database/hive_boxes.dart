@@ -1,0 +1,1 @@
+// Hive kutuları burada tanımlanacak

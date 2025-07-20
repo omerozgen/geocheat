@@ -1,0 +1,95 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+class IkizkenarUcgenKenarPainter extends StatelessWidget {
+  final double size;
+  const IkizkenarUcgenKenarPainter({super.key, this.size = 180});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(
+      size: Size(size, size),
+      painter: _IkizkenarUcgenKenarPainter(),
+    );
+  }
+}
+
+class _IkizkenarUcgenKenarPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final double margin = size.width * 0.18;
+    final double base = size.width * 0.64;
+    final double height = size.height * 0.52;
+    final Offset a = Offset(margin, size.height - margin);
+    final Offset b = Offset(margin + base, size.height - margin);
+    final Offset c = Offset(size.width / 2, size.height - margin - height);
+
+    final trianglePaint = Paint()
+      ..color = Colors.purple.withOpacity(0.13)
+      ..style = PaintingStyle.fill;
+    final trianglePath = Path()
+      ..moveTo(a.dx, a.dy)
+      ..lineTo(b.dx, b.dy)
+      ..lineTo(c.dx, c.dy)
+      ..close();
+    canvas.drawPath(trianglePath, trianglePaint);
+
+    final borderPaint = Paint()
+      ..color = Colors.purple
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 3;
+    canvas.drawPath(trianglePath, borderPaint);
+
+    // Yükseklik çizgisi
+    final heightPaint = Paint()
+      ..color = Colors.red
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+    canvas.drawLine(
+      c,
+      Offset(size.width / 2, size.height - margin),
+      heightPaint,
+    );
+
+    final textStyle = TextStyle(color: Colors.black, fontSize: 15);
+    // a kenarları (eşit)
+    _drawText(
+      canvas,
+      'a',
+      Offset((a.dx + c.dx) / 2 - 18, (a.dy + c.dy) / 2 - 8),
+      textStyle,
+    );
+    _drawText(
+      canvas,
+      'a',
+      Offset((b.dx + c.dx) / 2 + 8, (b.dy + c.dy) / 2 - 10),
+      textStyle,
+    );
+    // b taban
+    _drawText(canvas, 'b', Offset((a.dx + b.dx) / 2 - 10, a.dy + 8), textStyle);
+    // h yüksekliği
+    _drawText(
+      canvas,
+      'h',
+      Offset(size.width / 2 + 8, (c.dy + (size.height - margin)) / 2 - 10),
+      textStyle.copyWith(color: Colors.red),
+    );
+    // Kenar etiketi
+    _drawText(
+      canvas,
+      'Kenar',
+      Offset((a.dx + c.dx) / 2 - 18, (a.dy + c.dy) / 2 - 28),
+      textStyle.copyWith(fontSize: 14, color: Colors.purple),
+    );
+  }
+
+  void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {
+    final textSpan = TextSpan(text: text, style: style);
+    final tp = TextPainter(text: textSpan, textDirection: TextDirection.ltr);
+    tp.layout();
+    tp.paint(canvas, pos);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
