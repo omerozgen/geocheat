@@ -47,6 +47,13 @@ import '../../widgets/daire_denklemi_painter.dart';
 import '../../widgets/parabol_denklemi_painter.dart';
 import '../../widgets/elips_denklemi_painter.dart';
 import '../../widgets/hiperbol_denklemi_painter.dart';
+import '../../widgets/dik_ucgen_cevresi_painter.dart';
+import '../../widgets/paralelkenar_cevresi_painter.dart';
+import '../../widgets/yamuk_cevresi_painter.dart';
+import '../../widgets/eskenar_dortgen_cevresi_painter.dart';
+import '../../widgets/besgen_cevresi_painter.dart';
+import '../../widgets/altigen_cevresi_painter.dart';
+import '../../widgets/ngon_cevresi_painter.dart';
 
 class FormulaDetailScreen extends ConsumerWidget {
   final Formula formula;
@@ -194,9 +201,33 @@ class FormulaDetailScreen extends ConsumerWidget {
     final isHiperbolDenklemi =
         formula.title.toLowerCase().contains('hiperbol denklemi') ||
         formula.description.toLowerCase().contains('hiperbol denklemi');
+    final isDikUcgenCevresi = formula.title.toLowerCase().contains(
+      'dik üçgen çevresi',
+    );
+    final isParalelkenarCevresi = formula.title.toLowerCase().contains(
+      'paralelkenar çevresi',
+    );
+    final isYamukCevresi = formula.title.toLowerCase().contains(
+      'yamuk çevresi',
+    );
+    final isEskenarDortgenCevre =
+        formula.title.toLowerCase().contains('eşkenar dörtgen çevresi') ||
+        formula.description.toLowerCase().contains('eşkenar dörtgen çevresi');
+    final isBesgenCevre =
+        formula.title.toLowerCase().contains('beşgen çevresi') ||
+        formula.description.toLowerCase().contains('beşgen çevresi');
+    final isAltigenCevre =
+        formula.title.toLowerCase().contains('altıgen çevresi') ||
+        formula.description.toLowerCase().contains('altıgen çevresi');
+    final isNgonCevre =
+        formula.title.toLowerCase().contains('n-kenarlı çokgen çevresi') ||
+        formula.description.toLowerCase().contains('n-kenarlı çokgen çevresi');
     return Scaffold(
       appBar: AppBar(
         title: Text(formula.title),
+        backgroundColor: const Color(0xFFe3f0ff),
+        foregroundColor: Colors.black87,
+        elevation: 0.5,
         actions: [
           IconButton(
             icon: Icon(
@@ -209,284 +240,331 @@ class FormulaDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(0),
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFFF6F8FB), Colors.white],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 18,
-                    horizontal: 16,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 8,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        formula.title,
-                        style: const TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
+        ),
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(0),
+          child: Container(
+            decoration: const BoxDecoration(),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 18,
+                      horizontal: 16,
+                    ),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: Offset(0, 2),
                         ),
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        formula.description,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          color: Colors.black87,
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          formula.title,
+                          style: const TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 10),
+                        Text(
+                          formula.description,
+                          style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black87,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(height: 20),
-                if (isDikUcgenAlan) ...[
-                  _FormulaVisualCard(child: DikUcgenAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isKareAlan) ...[
-                  _FormulaVisualCard(child: KareAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikdortgenAlan) ...[
-                  _FormulaVisualCard(child: DikdortgenAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isParalelkenarAlan) ...[
-                  _FormulaVisualCard(child: ParalelkenarAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isYamukAlan) ...[
-                  _FormulaVisualCard(child: YamukAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isEskenarDortgenAlan) ...[
-                  _FormulaVisualCard(
-                    child: EskenarDortgenAlanPainter(size: 180),
+                  const SizedBox(height: 20),
+                  if (isDikUcgenAlan) ...[
+                    _FormulaVisualCard(child: DikUcgenAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKareAlan) ...[
+                    _FormulaVisualCard(child: KareAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikdortgenAlan) ...[
+                    _FormulaVisualCard(child: DikdortgenAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isParalelkenarAlan) ...[
+                    _FormulaVisualCard(
+                      child: ParalelkenarAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isYamukAlan) ...[
+                    _FormulaVisualCard(child: YamukAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarDortgenAlan) ...[
+                    _FormulaVisualCard(
+                      child: EskenarDortgenAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isBesgenAlan) ...[
+                    _FormulaVisualCard(child: BesgenAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isAltigenAlan) ...[
+                    _FormulaVisualCard(child: AltigenAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isNgonAlan) ...[
+                    _FormulaVisualCard(child: NgonAlanPainter(size: 180, n: 7)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDaireAlan) ...[
+                    _FormulaVisualCard(child: DaireAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isCemberUzunlugu) ...[
+                    _FormulaVisualCard(child: CemberUzunluguPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isYayUzunlugu) ...[
+                    _FormulaVisualCard(child: YayUzunluguPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKirisUzunlugu) ...[
+                    _FormulaVisualCard(child: KirisUzunluguPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKupHacmi) ...[
+                    _FormulaVisualCard(child: KupHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikdortgenlerPrizmasiHacmi) ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenlerPrizmasiHacimPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isSilindirHacmi) ...[
+                    _FormulaVisualCard(child: SilindirHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKoniHacmi) ...[
+                    _FormulaVisualCard(child: KoniHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKureHacmi) ...[
+                    _FormulaVisualCard(child: KureHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikPiramitHacmi) ...[
+                    _FormulaVisualCard(
+                      child: DikPiramitHacimPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isPrizmaHacmi) ...[
+                    _FormulaVisualCard(child: PrizmaHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikDaireDilimiHacmi) ...[
+                    _FormulaVisualCard(
+                      child: DikDaireDilimiHacimPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenHipotenus) ...[
+                    _FormulaVisualCard(
+                      child: DikUcgenHipotenusPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarUcgenYukseklik) ...[
+                    _FormulaVisualCard(
+                      child: EskenarUcgenYukseklikPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isIkizkenarUcgenKenar) ...[
+                    _FormulaVisualCard(
+                      child: IkizkenarUcgenKenarPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenOklid) ...[
+                    _FormulaVisualCard(child: DikUcgenOklidPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarUcgenIcAci) ...[
+                    _FormulaVisualCard(
+                      child: EskenarUcgenAciPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarUcgenCevre) ...[
+                    _FormulaVisualCard(
+                      child: EskenarUcgenCevresiPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isIkizkenarUcgenTabanAci) ...[
+                    _FormulaVisualCard(
+                      child: IkizkenarUcgenTabanAciPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isIkizkenarUcgenCevre) ...[
+                    _FormulaVisualCard(
+                      child: IkizkenarUcgenCevresiPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenSinus) ...[
+                    _FormulaVisualCard(child: DikUcgenSinusPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenKosinus) ...[
+                    _FormulaVisualCard(
+                      child: DikUcgenKosinusPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenTanjant) ...[
+                    _FormulaVisualCard(
+                      child: DikUcgenTanjantPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarUcgenAlan) ...[
+                    _FormulaVisualCard(
+                      child: EskenarUcgenAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isIkizkenarUcgenAlan) ...[
+                    _FormulaVisualCard(
+                      child: IkizkenarUcgenAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKareCevre) ...[
+                    _FormulaVisualCard(child: KareCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikdortgenCevre) ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenCevresiPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKupYuzeyAlani) ...[
+                    _FormulaVisualCard(child: KupYuzeyAlaniPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isSilindirYuzeyAlani) ...[
+                    _FormulaVisualCard(
+                      child: SilindirYuzeyAlaniPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isKureYuzeyAlani) ...[
+                    _FormulaVisualCard(child: KureYuzeyAlaniPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDogruDenklemi) ...[
+                    _FormulaVisualCard(child: DogruDenklemiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDaireDenklemi) ...[
+                    _FormulaVisualCard(child: DaireDenklemiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isParabolDenklemi) ...[
+                    _FormulaVisualCard(
+                      child: ParabolDenklemiPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isElipsDenklemi) ...[
+                    _FormulaVisualCard(child: ElipsDenklemiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isHiperbolDenklemi) ...[
+                    _FormulaVisualCard(
+                      child: HiperbolDenklemiPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isDikUcgenCevresi) ...[
+                    Center(child: DikUcgenCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isParalelkenarCevresi) ...[
+                    Center(child: ParalelkenarCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isYamukCevresi) ...[
+                    Center(child: YamukCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isEskenarDortgenCevre) ...[
+                    Center(child: EskenarDortgenCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isBesgenCevre) ...[
+                    Center(child: BesgenCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isAltigenCevre) ...[
+                    Center(child: AltigenCevresiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (isNgonCevre) ...[
+                    Center(child: NgonCevresiPainter(size: 180, n: 7)),
+                    const SizedBox(height: 16),
+                  ],
+                  // LaTeX formül kutusu
+                  Container(
+                    width: double.infinity,
+                    margin: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.all(18),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(18),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black12,
+                          blurRadius: 8,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: Math.tex(
+                      formula.formulaText,
+                      textStyle: const TextStyle(fontSize: 28),
+                    ),
                   ),
                   const SizedBox(height: 16),
                 ],
-                if (isBesgenAlan) ...[
-                  _FormulaVisualCard(child: BesgenAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isAltigenAlan) ...[
-                  _FormulaVisualCard(child: AltigenAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isNgonAlan) ...[
-                  _FormulaVisualCard(child: NgonAlanPainter(size: 180, n: 7)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDaireAlan) ...[
-                  _FormulaVisualCard(child: DaireAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isCemberUzunlugu) ...[
-                  _FormulaVisualCard(child: CemberUzunluguPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isYayUzunlugu) ...[
-                  _FormulaVisualCard(child: YayUzunluguPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isKirisUzunlugu) ...[
-                  _FormulaVisualCard(child: KirisUzunluguPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isKupHacmi) ...[
-                  _FormulaVisualCard(child: KupHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikdortgenlerPrizmasiHacmi) ...[
-                  _FormulaVisualCard(
-                    child: DikdortgenlerPrizmasiHacimPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isSilindirHacmi) ...[
-                  _FormulaVisualCard(child: SilindirHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isKoniHacmi) ...[
-                  _FormulaVisualCard(child: KoniHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isKureHacmi) ...[
-                  _FormulaVisualCard(child: KureHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikPiramitHacmi) ...[
-                  _FormulaVisualCard(child: DikPiramitHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isPrizmaHacmi) ...[
-                  _FormulaVisualCard(child: PrizmaHacimPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikDaireDilimiHacmi) ...[
-                  _FormulaVisualCard(
-                    child: DikDaireDilimiHacimPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikUcgenHipotenus) ...[
-                  _FormulaVisualCard(
-                    child: DikUcgenHipotenusPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isEskenarUcgenYukseklik) ...[
-                  _FormulaVisualCard(
-                    child: EskenarUcgenYukseklikPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isIkizkenarUcgenKenar) ...[
-                  _FormulaVisualCard(
-                    child: IkizkenarUcgenKenarPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikUcgenOklid) ...[
-                  _FormulaVisualCard(child: DikUcgenOklidPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isEskenarUcgenIcAci) ...[
-                  _FormulaVisualCard(child: EskenarUcgenAciPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isEskenarUcgenCevre) ...[
-                  _FormulaVisualCard(
-                    child: EskenarUcgenCevresiPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isIkizkenarUcgenTabanAci) ...[
-                  _FormulaVisualCard(
-                    child: IkizkenarUcgenTabanAciPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isIkizkenarUcgenCevre) ...[
-                  _FormulaVisualCard(
-                    child: IkizkenarUcgenCevresiPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikUcgenSinus) ...[
-                  _FormulaVisualCard(child: DikUcgenSinusPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikUcgenKosinus) ...[
-                  _FormulaVisualCard(child: DikUcgenKosinusPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikUcgenTanjant) ...[
-                  _FormulaVisualCard(child: DikUcgenTanjantPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isEskenarUcgenAlan) ...[
-                  _FormulaVisualCard(child: EskenarUcgenAlanPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isIkizkenarUcgenAlan) ...[
-                  _FormulaVisualCard(
-                    child: IkizkenarUcgenAlanPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isKareCevre) ...[
-                  _FormulaVisualCard(child: KareCevresiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDikdortgenCevre) ...[
-                  _FormulaVisualCard(
-                    child: DikdortgenCevresiPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isKupYuzeyAlani) ...[
-                  _FormulaVisualCard(child: KupYuzeyAlaniPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isSilindirYuzeyAlani) ...[
-                  _FormulaVisualCard(
-                    child: SilindirYuzeyAlaniPainter(size: 180),
-                  ),
-                  const SizedBox(height: 16),
-                ],
-                if (isKureYuzeyAlani) ...[
-                  _FormulaVisualCard(child: KureYuzeyAlaniPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDogruDenklemi) ...[
-                  _FormulaVisualCard(child: DogruDenklemiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isDaireDenklemi) ...[
-                  _FormulaVisualCard(child: DaireDenklemiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isParabolDenklemi) ...[
-                  _FormulaVisualCard(child: ParabolDenklemiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isElipsDenklemi) ...[
-                  _FormulaVisualCard(child: ElipsDenklemiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                if (isHiperbolDenklemi) ...[
-                  _FormulaVisualCard(child: HiperbolDenklemiPainter(size: 180)),
-                  const SizedBox(height: 16),
-                ],
-                // LaTeX formül kutusu
-                Container(
-                  width: double.infinity,
-                  margin: const EdgeInsets.symmetric(vertical: 12),
-                  padding: const EdgeInsets.all(18),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(18),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 8,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  child: Math.tex(
-                    formula.formulaText,
-                    textStyle: const TextStyle(fontSize: 28),
-                  ),
-                ),
-                const SizedBox(height: 16),
-              ],
+              ),
             ),
           ),
         ),

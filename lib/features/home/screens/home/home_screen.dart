@@ -16,8 +16,41 @@ class HomeScreen extends ConsumerWidget {
     final categories = ref.watch(homeViewModelProvider);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('GeoCheat'),
+        title: RichText(
+          text: TextSpan(
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+            children: [
+              TextSpan(
+                text: 'Geo',
+                style: TextStyle(
+                  color: Colors.blueAccent,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const WidgetSpan(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  child: Text(
+                    '∆',
+                    style: TextStyle(color: Colors.black54, fontSize: 20),
+                  ),
+                ),
+              ),
+              TextSpan(
+                text: 'Cheat',
+                style: TextStyle(
+                  color: Colors.black87,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
         centerTitle: true,
+        backgroundColor: const Color(0xFFe3f0ff),
+        foregroundColor: Colors.black87,
+        elevation: 0.5,
         actions: [
           IconButton(
             icon: const Icon(Icons.favorite),
@@ -29,34 +62,43 @@ class HomeScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          int crossAxisCount = 2;
-          double aspectRatio = 1.1;
-          if (constraints.maxWidth < 400) {
-            crossAxisCount = 1;
-            aspectRatio = 2.2;
-          } else if (constraints.maxWidth > 700) {
-            crossAxisCount = 3;
-            aspectRatio = 1.1;
-          }
-          return Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                childAspectRatio: aspectRatio,
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            int crossAxisCount = 2;
+            double aspectRatio = 1.1;
+            if (constraints.maxWidth < 400) {
+              crossAxisCount = 1;
+              aspectRatio = 2.2;
+            } else if (constraints.maxWidth > 700) {
+              crossAxisCount = 3;
+              aspectRatio = 1.1;
+            }
+            return Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  childAspectRatio: aspectRatio,
+                ),
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  final category = categories[index];
+                  return CategoryCard(category: category);
+                },
               ),
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-                return CategoryCard(category: category);
-              },
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
