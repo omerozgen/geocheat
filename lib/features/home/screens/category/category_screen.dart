@@ -22,22 +22,87 @@ class CategoryScreen extends StatelessWidget {
     }
     return Scaffold(
       appBar: AppBar(title: Text(category.name)),
-      body: ListView.builder(
-        itemCount: subcategories.length,
-        itemBuilder: (context, index) {
-          final sub = subcategories[index];
-          return ListTile(
-            title: Text(sub.name),
-            leading: const Icon(Icons.category),
-            onTap: () {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => CategoryScreen(category: sub),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.separated(
+          itemCount: subcategories.length,
+          separatorBuilder: (context, index) => const SizedBox(height: 16),
+          itemBuilder: (context, index) {
+            final sub = subcategories[index];
+            return Card(
+              elevation: 4,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              shadowColor: Colors.blueAccent.withOpacity(0.10),
+              child: InkWell(
+                borderRadius: BorderRadius.circular(20),
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => CategoryScreen(category: sub),
+                    ),
+                  );
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.blueAccent.withOpacity(0.06),
+                        Colors.white,
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 22,
+                    horizontal: 18,
+                  ),
+                  child: Row(
+                    children: [
+                      if (sub.iconPath.endsWith('.svg'))
+                        SizedBox(
+                          width: 48,
+                          height: 48,
+                          child: Padding(
+                            padding: const EdgeInsets.only(right: 12),
+                            child: Icon(
+                              Icons.category,
+                              size: 40,
+                              color: Colors.blueAccent,
+                            ),
+                          ),
+                        )
+                      else
+                        Padding(
+                          padding: const EdgeInsets.only(right: 12),
+                          child: Icon(
+                            Icons.category,
+                            size: 40,
+                            color: Colors.blueAccent,
+                          ),
+                        ),
+                      Expanded(
+                        child: Text(
+                          sub.name,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              );
-            },
-          );
-        },
+              ),
+            );
+          },
+        ),
       ),
     );
   }

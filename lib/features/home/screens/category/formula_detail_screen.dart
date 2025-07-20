@@ -209,202 +209,314 @@ class FormulaDetailScreen extends ConsumerWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              formula.title,
-              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(0),
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xFFF6F8FB), Colors.white],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
             ),
-            const SizedBox(height: 12),
-            Text(formula.description, style: const TextStyle(fontSize: 16)),
-            const SizedBox(height: 24),
-            if (isDikUcgenAlan) ...[
-              Center(child: DikUcgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKareAlan) ...[
-              Center(child: KareAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikdortgenAlan) ...[
-              Center(child: DikdortgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isParalelkenarAlan) ...[
-              Center(child: ParalelkenarAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isYamukAlan) ...[
-              Center(child: YamukAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isEskenarDortgenAlan) ...[
-              Center(child: EskenarDortgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isBesgenAlan) ...[
-              Center(child: BesgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isAltigenAlan) ...[
-              Center(child: AltigenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isNgonAlan) ...[
-              Center(child: NgonAlanPainter(size: 180, n: 7)),
-              const SizedBox(height: 16),
-            ],
-            if (isDaireAlan) ...[
-              Center(child: DaireAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isCemberUzunlugu) ...[
-              Center(child: CemberUzunluguPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isYayUzunlugu) ...[
-              Center(child: YayUzunluguPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKirisUzunlugu) ...[
-              Center(child: KirisUzunluguPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKupHacmi) ...[
-              Center(child: KupHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikdortgenlerPrizmasiHacmi) ...[
-              Center(child: DikdortgenlerPrizmasiHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isSilindirHacmi) ...[
-              Center(child: SilindirHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKoniHacmi) ...[
-              Center(child: KoniHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKureHacmi) ...[
-              Center(child: KureHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikPiramitHacmi) ...[
-              Center(child: DikPiramitHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isPrizmaHacmi) ...[
-              Center(child: PrizmaHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikDaireDilimiHacmi) ...[
-              Center(child: DikDaireDilimiHacimPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikUcgenHipotenus) ...[
-              Center(child: DikUcgenHipotenusPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isEskenarUcgenYukseklik) ...[
-              Center(child: EskenarUcgenYukseklikPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isIkizkenarUcgenKenar) ...[
-              Center(child: IkizkenarUcgenKenarPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikUcgenOklid) ...[
-              Center(child: DikUcgenOklidPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isEskenarUcgenIcAci) ...[
-              Center(child: EskenarUcgenAciPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isEskenarUcgenCevre) ...[
-              Center(child: EskenarUcgenCevresiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isIkizkenarUcgenTabanAci) ...[
-              Center(child: IkizkenarUcgenTabanAciPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isIkizkenarUcgenCevre) ...[
-              Center(child: IkizkenarUcgenCevresiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikUcgenSinus) ...[
-              Center(child: DikUcgenSinusPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikUcgenKosinus) ...[
-              Center(child: DikUcgenKosinusPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikUcgenTanjant) ...[
-              Center(child: DikUcgenTanjantPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isEskenarUcgenAlan) ...[
-              Center(child: EskenarUcgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isIkizkenarUcgenAlan) ...[
-              Center(child: IkizkenarUcgenAlanPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKareCevre) ...[
-              Center(child: KareCevresiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDikdortgenCevre) ...[
-              Center(child: DikdortgenCevresiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKupYuzeyAlani) ...[
-              Center(child: KupYuzeyAlaniPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isSilindirYuzeyAlani) ...[
-              Center(child: SilindirYuzeyAlaniPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isKureYuzeyAlani) ...[
-              Center(child: KureYuzeyAlaniPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDogruDenklemi) ...[
-              Center(child: DogruDenklemiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isDaireDenklemi) ...[
-              Center(child: DaireDenklemiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isParabolDenklemi) ...[
-              Center(child: ParabolDenklemiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isElipsDenklemi) ...[
-              Center(child: ElipsDenklemiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            if (isHiperbolDenklemi) ...[
-              Center(child: HiperbolDenklemiPainter(size: 180)),
-              const SizedBox(height: 16),
-            ],
-            Math.tex(
-              formula.formulaText,
-              textStyle: const TextStyle(fontSize: 28),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 18,
+                    horizontal: 16,
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 8,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        formula.title,
+                        style: const TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black87,
+                        ),
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        formula.description,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          color: Colors.black87,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(height: 20),
+                if (isDikUcgenAlan) ...[
+                  _FormulaVisualCard(child: DikUcgenAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isKareAlan) ...[
+                  _FormulaVisualCard(child: KareAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikdortgenAlan) ...[
+                  _FormulaVisualCard(child: DikdortgenAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isParalelkenarAlan) ...[
+                  _FormulaVisualCard(child: ParalelkenarAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isYamukAlan) ...[
+                  _FormulaVisualCard(child: YamukAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isEskenarDortgenAlan) ...[
+                  _FormulaVisualCard(
+                    child: EskenarDortgenAlanPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isBesgenAlan) ...[
+                  _FormulaVisualCard(child: BesgenAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isAltigenAlan) ...[
+                  _FormulaVisualCard(child: AltigenAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isNgonAlan) ...[
+                  _FormulaVisualCard(child: NgonAlanPainter(size: 180, n: 7)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDaireAlan) ...[
+                  _FormulaVisualCard(child: DaireAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isCemberUzunlugu) ...[
+                  _FormulaVisualCard(child: CemberUzunluguPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isYayUzunlugu) ...[
+                  _FormulaVisualCard(child: YayUzunluguPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isKirisUzunlugu) ...[
+                  _FormulaVisualCard(child: KirisUzunluguPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isKupHacmi) ...[
+                  _FormulaVisualCard(child: KupHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikdortgenlerPrizmasiHacmi) ...[
+                  _FormulaVisualCard(
+                    child: DikdortgenlerPrizmasiHacimPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isSilindirHacmi) ...[
+                  _FormulaVisualCard(child: SilindirHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isKoniHacmi) ...[
+                  _FormulaVisualCard(child: KoniHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isKureHacmi) ...[
+                  _FormulaVisualCard(child: KureHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikPiramitHacmi) ...[
+                  _FormulaVisualCard(child: DikPiramitHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isPrizmaHacmi) ...[
+                  _FormulaVisualCard(child: PrizmaHacimPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikDaireDilimiHacmi) ...[
+                  _FormulaVisualCard(
+                    child: DikDaireDilimiHacimPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikUcgenHipotenus) ...[
+                  _FormulaVisualCard(
+                    child: DikUcgenHipotenusPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isEskenarUcgenYukseklik) ...[
+                  _FormulaVisualCard(
+                    child: EskenarUcgenYukseklikPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isIkizkenarUcgenKenar) ...[
+                  _FormulaVisualCard(
+                    child: IkizkenarUcgenKenarPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikUcgenOklid) ...[
+                  _FormulaVisualCard(child: DikUcgenOklidPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isEskenarUcgenIcAci) ...[
+                  _FormulaVisualCard(child: EskenarUcgenAciPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isEskenarUcgenCevre) ...[
+                  _FormulaVisualCard(
+                    child: EskenarUcgenCevresiPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isIkizkenarUcgenTabanAci) ...[
+                  _FormulaVisualCard(
+                    child: IkizkenarUcgenTabanAciPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isIkizkenarUcgenCevre) ...[
+                  _FormulaVisualCard(
+                    child: IkizkenarUcgenCevresiPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikUcgenSinus) ...[
+                  _FormulaVisualCard(child: DikUcgenSinusPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikUcgenKosinus) ...[
+                  _FormulaVisualCard(child: DikUcgenKosinusPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikUcgenTanjant) ...[
+                  _FormulaVisualCard(child: DikUcgenTanjantPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isEskenarUcgenAlan) ...[
+                  _FormulaVisualCard(child: EskenarUcgenAlanPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isIkizkenarUcgenAlan) ...[
+                  _FormulaVisualCard(
+                    child: IkizkenarUcgenAlanPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isKareCevre) ...[
+                  _FormulaVisualCard(child: KareCevresiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDikdortgenCevre) ...[
+                  _FormulaVisualCard(
+                    child: DikdortgenCevresiPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isKupYuzeyAlani) ...[
+                  _FormulaVisualCard(child: KupYuzeyAlaniPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isSilindirYuzeyAlani) ...[
+                  _FormulaVisualCard(
+                    child: SilindirYuzeyAlaniPainter(size: 180),
+                  ),
+                  const SizedBox(height: 16),
+                ],
+                if (isKureYuzeyAlani) ...[
+                  _FormulaVisualCard(child: KureYuzeyAlaniPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDogruDenklemi) ...[
+                  _FormulaVisualCard(child: DogruDenklemiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isDaireDenklemi) ...[
+                  _FormulaVisualCard(child: DaireDenklemiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isParabolDenklemi) ...[
+                  _FormulaVisualCard(child: ParabolDenklemiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isElipsDenklemi) ...[
+                  _FormulaVisualCard(child: ElipsDenklemiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                if (isHiperbolDenklemi) ...[
+                  _FormulaVisualCard(child: HiperbolDenklemiPainter(size: 180)),
+                  const SizedBox(height: 16),
+                ],
+                // LaTeX formül kutusu
+                Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.symmetric(vertical: 12),
+                  padding: const EdgeInsets.all(18),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(18),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black12,
+                        blurRadius: 8,
+                        offset: Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Math.tex(
+                    formula.formulaText,
+                    textStyle: const TextStyle(fontSize: 28),
+                  ),
+                ),
+                const SizedBox(height: 16),
+              ],
             ),
-            const SizedBox(height: 24),
-            // TODO: Görsel ekleme burada olacak
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FormulaVisualCard extends StatelessWidget {
+  final Widget child;
+  const _FormulaVisualCard({required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+              offset: Offset(0, 2),
+            ),
           ],
         ),
+        padding: const EdgeInsets.all(16),
+        margin: const EdgeInsets.symmetric(vertical: 4),
+        child: child,
       ),
     );
   }
