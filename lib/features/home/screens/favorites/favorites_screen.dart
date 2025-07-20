@@ -1,44 +1,49 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../viewmodels/favorites_viewmodel.dart';
+import 'package:geocheat/core/constants/categories.dart';
 import '../category/formula_detail_screen.dart';
+import 'package:flutter_math_fork/flutter_math.dart';
 
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favorites = ref.watch(favoritesViewModelProvider);
+    final favoriteIds = ref.watch(favoritesProvider);
+    final filteredFormulas = formulas
+        .where((f) => favoriteIds.contains(f.id))
+        .toList();
     return Scaffold(
       appBar: AppBar(title: const Text('Favorilerim')),
-      body: favorites.isEmpty
+      body: filteredFormulas.isEmpty
           ? const Center(child: Text('Henüz favori formül yok.'))
           : ListView.builder(
-              itemCount: favorites.length,
+              itemCount: filteredFormulas.length,
               itemBuilder: (context, index) {
-                final formula = favorites[index];
-                return Card(
-                  margin: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 8,
+                final formula = filteredFormulas[index];
+                return ListTile(
+                  title: Text(formula.title),
+                  subtitle: Math.tex(
+                    formula.formulaText,
+                    textStyle: const TextStyle(fontSize: 18),
                   ),
-                  child: ListTile(
-                    title: Text(formula.title),
-                    subtitle: Text(formula.formulaText),
-                    trailing: Icon(
-                      formula.isFavorited
-                          ? Icons.favorite
-                          : Icons.favorite_border,
-                      color: formula.isFavorited ? Colors.red : null,
-                    ),
-                    onTap: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (_) => FormulaDetailScreen(formula: formula),
-                        ),
-                      );
+                  trailing: IconButton(
+                    icon: const Icon(Icons.favorite, color: Colors.red),
+                    onPressed: () {
+                      ref
+                          .read(favoritesProvider.notifier)
+                          .toggleFavorite(formula.id);
                     },
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => FormulaDetailScreen(formula: formula),
+                      ),
+                    );
+                  },
                 );
               },
             ),

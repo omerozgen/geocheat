@@ -15,7 +15,7 @@ class FormulaListScreen extends ConsumerWidget {
     final List<Formula> filteredFormulas = formulas
         .where((f) => f.categoryId == categoryId)
         .toList();
-    final favorites = ref.watch(favoritesViewModelProvider);
+    final favorites = ref.watch(favoritesProvider);
 
     return Scaffold(
       appBar: AppBar(title: const Text('Formüller')),
@@ -25,7 +25,7 @@ class FormulaListScreen extends ConsumerWidget {
               itemCount: filteredFormulas.length,
               itemBuilder: (context, index) {
                 final formula = filteredFormulas[index];
-                final isFavorited = favorites.any((f) => f.id == formula.id);
+                final isFavorited = favorites.contains(formula.id);
                 return Card(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -42,9 +42,9 @@ class FormulaListScreen extends ConsumerWidget {
                         isFavorited ? Icons.favorite : Icons.favorite_border,
                         color: isFavorited ? Colors.red : null,
                       ),
-                      onPressed: () async {
-                        await ref
-                            .read(favoritesViewModelProvider.notifier)
+                      onPressed: () {
+                        ref
+                            .read(favoritesProvider.notifier)
                             .toggleFavorite(formula.id);
                       },
                     ),

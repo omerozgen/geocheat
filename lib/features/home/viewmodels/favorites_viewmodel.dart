@@ -1,24 +1,37 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/formula.dart';
-import '../repositories/formula_repository.dart';
+import 'package:hive/hive.dart';
 
-final favoritesViewModelProvider =
-    StateNotifierProvider<FavoritesViewModel, List<Formula>>((ref) {
+final favoritesProvider =
+    StateNotifierProvider<FavoritesViewModel, Set<String>>((ref) {
       return FavoritesViewModel();
     });
 
-class FavoritesViewModel extends StateNotifier<List<Formula>> {
-  final FormulaRepository _repo = FormulaRepository();
-  FavoritesViewModel() : super([]) {
-    loadFavorites();
+class FavoritesViewModel extends StateNotifier<Set<String>> {
+  static const String _boxName = 'favorites';
+  late Box box;
+
+  FavoritesViewModel() : super({}) {
+    _init();
   }
 
-  Future<void> loadFavorites() async {
-    state = await _repo.getFavorites();
+  Future<void> _init() async {
+    box = await Hive.openBox(_boxName);
+    final ids = box.get('ids', defaultValue: <String>[]).cast<String>();
+    state = Set<String>.from(ids);
   }
 
-  Future<void> toggleFavorite(String id) async {
-    await _repo.toggleFavorite(id);
-    await loadFavorites();
+  void toggleFavorite(String formulaId) {
+    final newState = Set<String>.from(state);
+    if (newState.contains(formulaId)) {
+      newState.remove(formulaId);
+    } else {
+      newState.add(formulaId);
+    }
+    state = newState;
+    box.put('ids', state.toList());
+  }
+
+  bool isFavorite(String formulaId) {
+    return state.contains(formulaId);
   }
 }

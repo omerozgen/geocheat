@@ -54,8 +54,8 @@ class FormulaDetailScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final favorites = ref.watch(favoritesViewModelProvider);
-    final isFavorited = favorites.any((f) => f.id == formula.id);
+    final favorites = ref.watch(favoritesProvider);
+    final isFavorited = favorites.contains(formula.id);
     final isDikUcgenAlan =
         formula.title.toLowerCase().contains('dik üçgen alanı') ||
         formula.description.toLowerCase().contains('dik üçgen alanı');
@@ -204,9 +204,7 @@ class FormulaDetailScreen extends ConsumerWidget {
               color: isFavorited ? Colors.red : null,
             ),
             onPressed: () async {
-              await ref
-                  .read(favoritesViewModelProvider.notifier)
-                  .toggleFavorite(formula.id);
+              ref.read(favoritesProvider.notifier).toggleFavorite(formula.id);
             },
           ),
         ],
