@@ -28,8 +28,28 @@ dev_dependencies:
   hive_generator: ^2.0.1
   freezed: ^2.4.5
   json_serializable:
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
   assets:
     - assets/translations/
+
+flutter_launcher_icons:
+  image_path: assets/logos/app_icon.png
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: assets/logos/app_icon.png
+  web:
+    generate: true
+    image_path: assets/logos/app_icon.png
+    background_color: "#ffffff"
+    theme_color: "#ffffff"
+  macos:
+    generate: true
+    image_path: assets/logos/app_icon.png
+  windows:
+    generate: true
+    image_path: assets/logos/app_icon.png
