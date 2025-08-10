@@ -20,16 +20,13 @@ class FormulaListScreen extends ConsumerWidget {
     final favorites = ref.watch(favoritesProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Formüller'),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
-        elevation: 0.5,
-      ),
+      appBar: AppBar(title: const Text('Formüller'), elevation: 0.5),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -60,10 +57,12 @@ class FormulaListScreen extends ConsumerWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     gradient: LinearGradient(
-                      colors: [
-                        Colors.blueAccent.withOpacity(0.06),
-                        Colors.white,
-                      ],
+                      colors: Theme.of(context).brightness == Brightness.dark
+                          ? [
+                              Colors.blueAccent.withOpacity(0.15),
+                              const Color(0xFF3d3d3d),
+                            ]
+                          : [Colors.blueAccent.withOpacity(0.06), Colors.white],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
@@ -89,10 +88,14 @@ class FormulaListScreen extends ConsumerWidget {
                           children: [
                             Text(
                               formula.title,
-                              style: const TextStyle(
+                              style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: Colors.black87,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? Colors.white
+                                    : Colors.black87,
                               ),
                             ),
                             const SizedBox(height: 8),
@@ -102,19 +105,34 @@ class FormulaListScreen extends ConsumerWidget {
                                 horizontal: 10,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.white,
+                                color:
+                                    Theme.of(context).brightness ==
+                                        Brightness.dark
+                                    ? const Color(0xFF3d3d3d)
+                                    : Colors.white,
                                 borderRadius: BorderRadius.circular(12),
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.black12,
+                                    color:
+                                        Theme.of(context).brightness ==
+                                            Brightness.dark
+                                        ? Colors.black26
+                                        : Colors.black12,
                                     blurRadius: 4,
-                                    offset: Offset(0, 1),
+                                    offset: const Offset(0, 1),
                                   ),
                                 ],
                               ),
                               child: Math.tex(
                                 formula.formulaText,
-                                textStyle: const TextStyle(fontSize: 18),
+                                textStyle: TextStyle(
+                                  fontSize: 18,
+                                  color:
+                                      Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white
+                                      : Colors.black87,
+                                ),
                               ),
                             ),
                           ],
@@ -131,7 +149,12 @@ class FormulaListScreen extends ConsumerWidget {
                             isFavorited
                                 ? Icons.favorite
                                 : Icons.favorite_border,
-                            color: isFavorited ? Colors.red : Colors.grey[400],
+                            color: isFavorited
+                                ? Colors.red
+                                : (Theme.of(context).brightness ==
+                                          Brightness.dark
+                                      ? Colors.white70
+                                      : Colors.grey[400]),
                             size: 28,
                           ),
                           onPressed: () {

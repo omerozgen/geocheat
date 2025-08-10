@@ -12,16 +12,13 @@ class SettingsScreen extends ConsumerWidget {
     final viewModel = ref.read(settingsViewModelProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ayarlar'),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
-        elevation: 0.5,
-      ),
+      appBar: AppBar(title: const Text('Ayarlar'), elevation: 0.5),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: settings.isDarkMode
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

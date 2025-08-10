@@ -15,16 +15,13 @@ class FavoritesScreen extends ConsumerWidget {
         .where((f) => favoriteIds.contains(f.id))
         .toList();
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Favorilerim'),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
-        elevation: 0.5,
-      ),
+      appBar: AppBar(title: const Text('Favorilerim'), elevation: 0.5),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -40,9 +37,14 @@ class FavoritesScreen extends ConsumerWidget {
                       color: Colors.grey[400],
                     ),
                     const SizedBox(height: 16),
-                    const Text(
+                    Text(
                       'Henüz favori formül yok.',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white70
+                            : Colors.black54,
+                      ),
                     ),
                   ],
                 ),
@@ -80,10 +82,16 @@ class FavoritesScreen extends ConsumerWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           gradient: LinearGradient(
-                            colors: [
-                              Colors.blueAccent.withOpacity(0.06),
-                              Colors.white,
-                            ],
+                            colors:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? [
+                                    Colors.blueAccent.withOpacity(0.15),
+                                    const Color(0xFF3d3d3d),
+                                  ]
+                                : [
+                                    Colors.blueAccent.withOpacity(0.06),
+                                    Colors.white,
+                                  ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight,
                           ),

@@ -12,12 +12,7 @@ class CalculatorScreen extends ConsumerWidget {
     final state = ref.watch(calculatorViewModelProvider);
     final viewModel = ref.read(calculatorViewModelProvider.notifier);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Hesap Makinesi'),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
-        elevation: 0.5,
-      ),
+      appBar: AppBar(title: const Text('Hesap Makinesi'), elevation: 0.5),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

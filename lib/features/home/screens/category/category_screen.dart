@@ -22,16 +22,13 @@ class CategoryScreen extends StatelessWidget {
       return const SizedBox.shrink();
     }
     return Scaffold(
-      appBar: AppBar(
-        title: Text(category.name),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
-        elevation: 0.5,
-      ),
+      appBar: AppBar(title: Text(category.name), elevation: 0.5),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -62,10 +59,15 @@ class CategoryScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       gradient: LinearGradient(
-                        colors: [
-                          Colors.blueAccent.withOpacity(0.06),
-                          Colors.white,
-                        ],
+                        colors: Theme.of(context).brightness == Brightness.dark
+                            ? [
+                                Colors.blueAccent.withOpacity(0.15),
+                                const Color(0xFF3d3d3d),
+                              ]
+                            : [
+                                Colors.blueAccent.withOpacity(0.06),
+                                Colors.white,
+                              ],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),

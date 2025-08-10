@@ -29,19 +29,26 @@ class HomeScreen extends ConsumerWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const WidgetSpan(
+              WidgetSpan(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 2),
+                  padding: const EdgeInsets.symmetric(horizontal: 2),
                   child: Text(
                     '∆',
-                    style: TextStyle(color: Colors.black54, fontSize: 20),
+                    style: TextStyle(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white70
+                          : Colors.black54,
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ),
               TextSpan(
                 text: 'Cheat',
                 style: TextStyle(
-                  color: Colors.black87,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.white
+                      : Colors.black87,
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w600,
                 ),
@@ -50,8 +57,7 @@ class HomeScreen extends ConsumerWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
+
         elevation: 0.5,
         actions: [
           IconButton(
@@ -73,9 +79,11 @@ class HomeScreen extends ConsumerWidget {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),

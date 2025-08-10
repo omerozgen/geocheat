@@ -276,8 +276,7 @@ class FormulaDetailScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(formula.title),
-        backgroundColor: const Color(0xFFe3f0ff),
-        foregroundColor: Colors.black87,
+
         elevation: 0.5,
         actions: [
           IconButton(
@@ -292,9 +291,11 @@ class FormulaDetailScreen extends ConsumerWidget {
         ],
       ),
       body: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFFe3f0ff), Color(0xFFf6f8fb)],
+            colors: Theme.of(context).brightness == Brightness.dark
+                ? [const Color(0xFF2d2d2d), const Color(0xFF1a1a1a)]
+                : [const Color(0xFFe3f0ff), const Color(0xFFf6f8fb)],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -323,13 +324,17 @@ class FormulaDetailScreen extends ConsumerWidget {
                       horizontal: 16,
                     ),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? const Color(0xFF3d3d3d)
+                          : Colors.white,
                       borderRadius: BorderRadius.circular(18),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black12,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.black26
+                              : Colors.black12,
                           blurRadius: 8,
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
@@ -338,18 +343,24 @@ class FormulaDetailScreen extends ConsumerWidget {
                       children: [
                         Text(
                           formula.title,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black87,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white
+                                : Colors.black87,
                           ),
                         ),
                         const SizedBox(height: 10),
                         Text(
                           formula.description,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 16,
-                            color: Colors.black87,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? Colors.white70
+                                : Colors.black87,
                           ),
                         ),
                       ],
@@ -859,19 +870,28 @@ class FormulaDetailScreen extends ConsumerWidget {
                     margin: const EdgeInsets.symmetric(vertical: 12),
                     padding: const EdgeInsets.all(18),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? const Color(0xFF3d3d3d)
+                          : Colors.white,
                       borderRadius: BorderRadius.circular(18),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black12,
+                          color: Theme.of(context).brightness == Brightness.dark
+                              ? Colors.black26
+                              : Colors.black12,
                           blurRadius: 8,
-                          offset: Offset(0, 2),
+                          offset: const Offset(0, 2),
                         ),
                       ],
                     ),
                     child: Math.tex(
                       formula.formulaText,
-                      textStyle: const TextStyle(fontSize: 28),
+                      textStyle: TextStyle(
+                        fontSize: 28,
+                        color: Theme.of(context).brightness == Brightness.dark
+                            ? Colors.white
+                            : Colors.black87,
+                      ),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -894,13 +914,17 @@ class _FormulaVisualCard extends StatelessWidget {
     return Center(
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).brightness == Brightness.dark
+              ? const Color(0xFF3d3d3d)
+              : Colors.white,
           borderRadius: BorderRadius.circular(20),
           boxShadow: [
             BoxShadow(
-              color: Colors.black12,
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.black26
+                  : Colors.black12,
               blurRadius: 10,
-              offset: Offset(0, 2),
+              offset: const Offset(0, 2),
             ),
           ],
         ),
