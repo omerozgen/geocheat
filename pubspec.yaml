@@ -18,6 +18,7 @@ dependencies:
   freezed_annotation: ^2.4.1
   json_annotation:
   flutter_math_fork: ^0.7.0
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,5 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/translations/

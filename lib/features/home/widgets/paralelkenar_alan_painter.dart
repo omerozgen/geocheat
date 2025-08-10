@@ -89,16 +89,7 @@ class _ParalelkenarAlanPainter extends CustomPainter {
       Offset(leftTop.dx - 24, (leftTop.dy + leftBottom.dy) / 2 - 20),
       textStyle.copyWith(color: Colors.blue),
     );
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      Offset(
-        (leftTop.dx + rightBottom.dx) / 2 - 10,
-        (leftTop.dy + rightBottom.dy) / 2,
-      ),
-      textStyle.copyWith(fontSize: 14, color: Colors.purple),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

@@ -73,13 +73,7 @@ class _EskenarUcgenYukseklikPainter extends CustomPainter {
       Offset(size.width / 2 + 8, (c.dy + (size.height - margin)) / 2 - 10),
       textStyle.copyWith(color: Colors.red),
     );
-    // Yükseklik etiketi
-    _drawText(
-      canvas,
-      'Yükseklik',
-      Offset(size.width / 2 - 24, (c.dy + (size.height - margin)) / 2 - 28),
-      textStyle.copyWith(fontSize: 14, color: Colors.red),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

@@ -74,16 +74,7 @@ class _KareAlanPainter extends CustomPainter {
       Offset(leftTop.dx - 28, (leftTop.dy + leftBottom.dy) / 2),
       textStyle,
     );
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      Offset(
-        (leftTop.dx + rightBottom.dx) / 2 - 10,
-        (leftTop.dy + rightBottom.dy) / 2,
-      ),
-      textStyle.copyWith(fontSize: 14, color: Colors.green),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

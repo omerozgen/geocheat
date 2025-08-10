@@ -97,13 +97,7 @@ class _DikUcgenOklidPainter extends CustomPainter {
       Offset((A.dx + B.dx) / 2 - 10, A.dy + 18),
       textStyle,
     );
-    // Etiket
-    _drawText(
-      canvas,
-      'Öklid',
-      Offset((A.dx + B.dx) / 2 - 24, size.height * 0.1),
-      textStyle.copyWith(fontSize: 14, color: Colors.orange),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

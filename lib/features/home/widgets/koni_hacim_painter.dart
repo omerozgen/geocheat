@@ -62,13 +62,7 @@ class _KoniHacimPainter extends CustomPainter {
     _drawText(canvas, 'r', Offset(cx + rx / 2, baseY + 8), textStyle);
     // h: taban merkezden yukarıya
     _drawText(canvas, 'h', Offset(cx + 8, (topY + baseY) / 2 - 10), textStyle);
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, (topY + baseY) / 2 - 8),
-      textStyle.copyWith(fontSize: 14, color: Colors.purple),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

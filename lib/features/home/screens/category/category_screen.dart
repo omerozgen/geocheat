@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../models/category.dart';
 import 'formula_list_screen.dart';
 import '../home/home_screen.dart';
@@ -22,7 +23,14 @@ class CategoryScreen extends StatelessWidget {
       return const SizedBox.shrink();
     }
     return Scaffold(
-      appBar: AppBar(title: Text(category.name), elevation: 0.5),
+      appBar: AppBar(
+        title: Text(
+          tr('categories.${category.id}') == 'categories.${category.id}'
+              ? category.name
+              : tr('categories.${category.id}'),
+        ),
+        elevation: 0.5,
+      ),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -166,7 +174,10 @@ class CategoryScreen extends StatelessWidget {
                           ),
                         Expanded(
                           child: Text(
-                            sub.name,
+                            tr('subcategories.${category.id}.${sub.id}') ==
+                                    'subcategories.${category.id}.${sub.id}'
+                                ? sub.name
+                                : tr('subcategories.${category.id}.${sub.id}'),
                             style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

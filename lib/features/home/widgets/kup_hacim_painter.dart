@@ -102,13 +102,7 @@ class _KupHacimPainter extends CustomPainter {
       ),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(frontTopLeft.dx + side / 3, frontTopLeft.dy + side / 2),
-      textStyle.copyWith(fontSize: 14, color: Colors.brown),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

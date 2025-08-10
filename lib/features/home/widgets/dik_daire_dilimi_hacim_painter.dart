@@ -87,13 +87,7 @@ class _DikDaireDilimiHacimPainter extends CustomPainter {
       Offset(cx + rx * cos(theta / 2) - 8, topY + ry * sin(theta / 2) - 24),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, (topY + bottomY) / 2 - 8),
-      textStyle.copyWith(fontSize: 14, color: Colors.deepPurple),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

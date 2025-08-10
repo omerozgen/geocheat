@@ -39,14 +39,7 @@ class _KoniYanAlanPainter extends CustomPainter {
     canvas.drawCircle(center, radius, borderPaint);
     canvas.drawLine(apex, Offset(center.dx - radius, center.dy), borderPaint);
     canvas.drawLine(apex, Offset(center.dx + radius, center.dy), borderPaint);
-    // 'A_yan' etiketi
-    final textStyle = TextStyle(
-      color: Colors.green[900],
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    );
-    final labelPos = Offset(center.dx - radius / 2, center.dy - 30);
-    _drawText(canvas, 'A_yan', labelPos, textStyle);
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

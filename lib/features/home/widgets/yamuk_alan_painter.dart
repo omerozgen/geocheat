@@ -74,16 +74,7 @@ class _YamukAlanPainter extends CustomPainter {
       Offset(hStart.dx - 24, (hStart.dy + hEnd.dy) / 2 - 10),
       textStyle.copyWith(color: Colors.blue),
     );
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      Offset(
-        (leftTop.dx + rightBottom.dx) / 2 - 10,
-        (leftTop.dy + rightBottom.dy) / 2,
-      ),
-      textStyle.copyWith(fontSize: 14, color: Colors.red),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

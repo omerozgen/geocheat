@@ -60,13 +60,7 @@ class _IkizkenarUcgenCevresiPainter extends CustomPainter {
     _drawPerimeterArrow(canvas, a, c, Colors.red);
     _drawPerimeterArrow(canvas, c, b, Colors.red);
     _drawPerimeterArrow(canvas, b, a, Colors.red);
-    // Etiket
-    _drawText(
-      canvas,
-      'Çevre',
-      Offset((a.dx + b.dx) / 2 - 18, a.dy + 28),
-      textStyle.copyWith(fontSize: 14, color: Colors.red),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

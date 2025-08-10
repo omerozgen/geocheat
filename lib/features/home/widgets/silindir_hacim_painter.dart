@@ -92,13 +92,7 @@ class _SilindirHacimPainter extends CustomPainter {
       Offset(cx + rx + 8, (topY + bottomY) / 2 - 8),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, (topY + bottomY) / 2 - 8),
-      textStyle.copyWith(fontSize: 14, color: Colors.orange),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

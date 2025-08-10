@@ -73,13 +73,7 @@ class _ParalelkenarCevresiPainter extends CustomPainter {
     _drawArrow(canvas, p1, p2, arrowPaint);
     _drawArrow(canvas, p2, p3, arrowPaint);
     _drawArrow(canvas, p3, p0, arrowPaint);
-    // Çevre etiketi
-    _drawText(
-      canvas,
-      'Çevre',
-      Offset(size.width * 0.5 - 28, size.height * 0.1),
-      textStyle.copyWith(color: Colors.red, fontSize: 15),
-    );
+    // Removed textual label
   }
 
   void _drawArrow(Canvas canvas, Offset start, Offset end, Paint paint) {

@@ -75,16 +75,7 @@ class _DikdortgenAlanPainter extends CustomPainter {
       Offset(rightTop.dx + 8, (rightTop.dy + rightBottom.dy) / 2 - 10),
       textStyle,
     );
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      Offset(
-        (leftTop.dx + rightBottom.dx) / 2 - 10,
-        (leftTop.dy + rightBottom.dy) / 2,
-      ),
-      textStyle.copyWith(fontSize: 14, color: Colors.orange),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

@@ -31,14 +31,7 @@ class _KureKesitPainter extends CustomPainter {
       ..color = Colors.purple.withOpacity(0.22)
       ..style = PaintingStyle.fill;
     canvas.drawCircle(center, radius * 0.7, kesitPaint);
-    // 'A_kesit' etiketi
-    final textStyle = TextStyle(
-      color: Colors.purple[900],
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    );
-    final labelPos = Offset(center.dx - 24, center.dy - radius * 0.7 - 18);
-    _drawText(canvas, 'A_kesit', labelPos, textStyle);
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

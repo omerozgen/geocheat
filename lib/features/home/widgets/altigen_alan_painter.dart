@@ -58,13 +58,7 @@ class _AltigenAlanPainter extends CustomPainter {
       final mid = Offset((p1.dx + p2.dx) / 2, (p1.dy + p2.dy) / 2);
       _drawText(canvas, 'a', mid, textStyle);
     }
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      center.translate(-18, 0),
-      textStyle.copyWith(fontSize: 14, color: Colors.teal),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

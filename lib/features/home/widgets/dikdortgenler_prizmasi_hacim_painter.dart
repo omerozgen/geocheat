@@ -105,13 +105,7 @@ class _DikdortgenlerPrizmasiHacimPainter extends CustomPainter {
       ),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(frontTopLeft.dx + w / 3, frontTopLeft.dy + h / 2),
-      textStyle.copyWith(fontSize: 14, color: Colors.blue),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

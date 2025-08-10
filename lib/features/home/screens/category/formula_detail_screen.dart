@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../models/formula.dart';
 import '../../viewmodels/favorites_viewmodel.dart';
 import '../../widgets/dik_ucgen_alan_painter.dart';
@@ -24,6 +25,9 @@ import '../../widgets/kure_hacim_painter.dart';
 import '../../widgets/dik_piramit_hacim_painter.dart';
 import '../../widgets/prizma_hacim_painter.dart';
 import '../../widgets/dik_daire_dilimi_hacim_painter.dart';
+import '../../widgets/daire_dilimi_alan_painter.dart';
+import '../../widgets/daire_parcasi_alan_painter.dart';
+import '../../widgets/mesafe_orta_nokta_egim_painters.dart';
 import '../../widgets/dik_ucgen_hipotenus_painter.dart';
 import '../../widgets/eskenar_ucgen_yukseklik_painter.dart';
 import '../../widgets/ikizkenar_ucgen_kenar_painter.dart';
@@ -275,7 +279,11 @@ class FormulaDetailScreen extends ConsumerWidget {
         formula.description.toLowerCase().contains('n-kenarlı çokgen çevresi');
     return Scaffold(
       appBar: AppBar(
-        title: Text(formula.title),
+        title: Text(
+          tr('formulas.${formula.id}.title') == 'formulas.${formula.id}.title'
+              ? formula.title
+              : tr('formulas.${formula.id}.title'),
+        ),
 
         elevation: 0.5,
         actions: [
@@ -342,7 +350,10 @@ class FormulaDetailScreen extends ConsumerWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          formula.title,
+                          tr('formulas.${formula.id}.title') ==
+                                  'formulas.${formula.id}.title'
+                              ? formula.title
+                              : tr('formulas.${formula.id}.title'),
                           style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
@@ -354,7 +365,10 @@ class FormulaDetailScreen extends ConsumerWidget {
                         ),
                         const SizedBox(height: 10),
                         Text(
-                          formula.description,
+                          tr('formulas.${formula.id}.description') ==
+                                  'formulas.${formula.id}.description'
+                              ? formula.description
+                              : tr('formulas.${formula.id}.description'),
                           style: TextStyle(
                             fontSize: 16,
                             color:
@@ -461,6 +475,18 @@ class FormulaDetailScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 16),
                   ],
+                  if (formula.id == 'f56') ...[
+                    _FormulaVisualCard(
+                      child: DaireDilimiAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f57') ...[
+                    _FormulaVisualCard(
+                      child: DaireParcasiAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
                   if (isDikUcgenHipotenus) ...[
                     _FormulaVisualCard(
                       child: DikUcgenHipotenusPainter(size: 180),
@@ -561,6 +587,26 @@ class FormulaDetailScreen extends ConsumerWidget {
                   ],
                   if (isDogruDenklemi) ...[
                     _FormulaVisualCard(child: DogruDenklemiPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f63') ...[
+                    _FormulaVisualCard(
+                      child: NoktalarArasiMesafePainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f64') ...[
+                    _FormulaVisualCard(
+                      child: NoktadanDogruyaMesafePainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f65') ...[
+                    _FormulaVisualCard(child: EgimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f66') ...[
+                    _FormulaVisualCard(child: OrtaNoktaPainter(size: 180)),
                     const SizedBox(height: 16),
                   ],
                   if (isDaireDenklemi) ...[

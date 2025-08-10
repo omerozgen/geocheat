@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../../../../core/constants/categories.dart';
 import '../../models/formula.dart';
 import 'formula_detail_screen.dart';
@@ -20,7 +21,7 @@ class FormulaListScreen extends ConsumerWidget {
     final favorites = ref.watch(favoritesProvider);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Formüller'), elevation: 0.5),
+      appBar: AppBar(title: Text('formulas.title'.tr()), elevation: 0.5),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -87,7 +88,10 @@ class FormulaListScreen extends ConsumerWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              formula.title,
+                              tr('formulas.${formula.id}.title') ==
+                                      'formulas.${formula.id}.title'
+                                  ? formula.title
+                                  : tr('formulas.${formula.id}.title'),
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

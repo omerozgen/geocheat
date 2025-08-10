@@ -92,13 +92,7 @@ class _PrizmaHacimPainter extends CustomPainter {
       ),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, cy - h / 2),
-      textStyle.copyWith(fontSize: 14, color: Colors.teal),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

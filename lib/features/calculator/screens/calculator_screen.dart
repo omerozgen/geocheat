@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
 import '../viewmodels/calculator_viewmodel.dart';
 import '../widgets/calculator_display.dart';
 import '../widgets/calculator_keypad.dart';
@@ -12,7 +13,7 @@ class CalculatorScreen extends ConsumerWidget {
     final state = ref.watch(calculatorViewModelProvider);
     final viewModel = ref.read(calculatorViewModelProvider.notifier);
     return Scaffold(
-      appBar: AppBar(title: const Text('Hesap Makinesi'), elevation: 0.5),
+      appBar: AppBar(title: Text('calculator.title'.tr()), elevation: 0.5),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16.0),

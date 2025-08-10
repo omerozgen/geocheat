@@ -64,13 +64,7 @@ class _KareCevresiPainter extends CustomPainter {
     _drawPerimeterArrow(canvas, topRight, bottomRight, Colors.red);
     _drawPerimeterArrow(canvas, bottomRight, bottomLeft, Colors.red);
     _drawPerimeterArrow(canvas, bottomLeft, topLeft, Colors.red);
-    // Etiket
-    _drawText(
-      canvas,
-      'Çevre',
-      Offset((topLeft.dx + bottomRight.dx) / 2 - 18, bottomRight.dy + 18),
-      textStyle.copyWith(fontSize: 14, color: Colors.red),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

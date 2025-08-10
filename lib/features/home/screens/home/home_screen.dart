@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'dart:ui' as ui;
 import '../../models/category.dart';
 import '../../viewmodels/home_viewmodel.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -187,7 +189,9 @@ class CategoryCard extends StatelessWidget {
                 iconWidget,
                 const SizedBox(height: 18),
                 Text(
-                  category.name,
+                  tr('categories.${category.id}') == 'categories.${category.id}'
+                      ? category.name
+                      : tr('categories.${category.id}'),
                   style: theme.textTheme.titleLarge?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.blueGrey[900],
@@ -1016,7 +1020,7 @@ class NGonPainter extends CustomPainter {
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {
     final textSpan = TextSpan(text: text, style: style);
-    final tp = TextPainter(text: textSpan, textDirection: TextDirection.ltr);
+    final tp = TextPainter(text: textSpan, textDirection: ui.TextDirection.ltr);
     tp.layout();
     tp.paint(canvas, pos - Offset(tp.width / 2, tp.height / 2));
   }

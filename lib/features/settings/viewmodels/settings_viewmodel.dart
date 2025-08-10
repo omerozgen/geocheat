@@ -68,7 +68,7 @@ class SettingsViewModel extends StateNotifier<Settings> {
   Future<void> clearAllData() async {
     try {
       await _box.clear();
-      await HiveBoxes.getFavoritesBox().clear();
+      await HiveBoxes.getFavoritesListBox().clear();
       state = Settings.defaultSettings();
     } catch (e) {
       // Hata durumunda log yazılabilir

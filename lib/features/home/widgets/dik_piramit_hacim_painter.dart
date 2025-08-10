@@ -103,13 +103,7 @@ class _DikPiramitHacimPainter extends CustomPainter {
       Offset(cx + 8, (apex.dy + offsetY) / 2 - 10),
       textStyle,
     );
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, (apex.dy + offsetY) / 2 + 12),
-      textStyle.copyWith(fontSize: 14, color: Colors.red),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

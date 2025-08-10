@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive/hive.dart';
+import 'package:geocheat/core/database/hive_boxes.dart';
 
 final favoritesProvider =
     StateNotifierProvider<FavoritesViewModel, Set<String>>((ref) {
@@ -7,17 +8,16 @@ final favoritesProvider =
     });
 
 class FavoritesViewModel extends StateNotifier<Set<String>> {
-  static const String _boxName = 'favorites';
-  late Box box;
+  late Box<List> box;
 
   FavoritesViewModel() : super({}) {
     _init();
   }
 
   Future<void> _init() async {
-    box = await Hive.openBox(_boxName);
-    final ids = box.get('ids', defaultValue: <String>[]).cast<String>();
-    state = Set<String>.from(ids);
+    box = HiveBoxes.getFavoritesListBox();
+    final List stored = box.get('ids', defaultValue: <String>[]) as List;
+    state = Set<String>.from(stored.cast<String>());
   }
 
   void toggleFavorite(String formulaId) {

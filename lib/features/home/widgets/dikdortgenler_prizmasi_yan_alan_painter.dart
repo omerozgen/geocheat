@@ -69,17 +69,7 @@ class _DikdortgenlerPrizmasiYanAlanPainter extends CustomPainter {
     canvas.drawLine(frontTopRight, backTopRight, borderPaint);
     canvas.drawLine(frontBottomLeft, backBottomLeft, borderPaint);
     canvas.drawLine(frontBottomRight, backBottomRight, borderPaint);
-    // 'A_yan' etiketi
-    final textStyle = TextStyle(
-      color: Colors.green[900],
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    );
-    final labelPos = Offset(
-      (frontTopRight.dx + backBottomRight.dx) / 2 - 18,
-      (frontTopRight.dy + backBottomRight.dy) / 2 - 8,
-    );
-    _drawText(canvas, 'A_yan', labelPos, textStyle);
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

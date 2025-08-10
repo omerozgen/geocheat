@@ -43,13 +43,7 @@ class _CemberUzunluguPainter extends CustomPainter {
       Offset(center.dx + radius / 2 + 4, center.dy - 18),
       textStyle,
     );
-    // Çevre etiketi
-    _drawText(
-      canvas,
-      'Çevre',
-      Offset(center.dx, center.dy - radius - 24),
-      TextStyle(fontSize: 14, color: Colors.deepOrange),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

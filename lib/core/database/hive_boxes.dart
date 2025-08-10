@@ -13,13 +13,14 @@ class HiveBoxes {
     Hive.registerAdapter(CategoryAdapter());
 
     // Kutuları aç
-    await Hive.openBox<Set<String>>(favoritesBox);
+    // Favorites are stored as a simple List<String> under key 'ids'
+    await Hive.openBox<List>(favoritesBox);
     await Hive.openBox<Map<String, dynamic>>(settingsBox);
     await Hive.openBox<Formula>(formulasBox);
   }
 
-  static Box<Set<String>> getFavoritesBox() {
-    return Hive.box<Set<String>>(favoritesBox);
+  static Box<List> getFavoritesListBox() {
+    return Hive.box<List>(favoritesBox);
   }
 
   static Box<Map<String, dynamic>> getSettingsBox() {

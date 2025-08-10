@@ -57,17 +57,7 @@ class _SilindirYanAlanPainter extends CustomPainter {
       ),
       borderPaint,
     );
-    // 'A_yan' etiketi
-    final textStyle = TextStyle(
-      color: Colors.green[900],
-      fontSize: 16,
-      fontWeight: FontWeight.bold,
-    );
-    final labelPos = Offset(
-      center.dx + radius - 40,
-      center.dy - size.height * 0.2,
-    );
-    _drawText(canvas, 'A_yan', labelPos, textStyle);
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

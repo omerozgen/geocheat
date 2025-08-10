@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geocheat/features/home/screens/home/home_screen.dart';
 import 'package:geocheat/features/settings/viewmodels/settings_viewmodel.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class GeoCheatApp extends ConsumerWidget {
   const GeoCheatApp({super.key});
@@ -12,6 +13,9 @@ class GeoCheatApp extends ConsumerWidget {
 
     return MaterialApp(
       title: 'GeoCheat',
+      locale: context.locale,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
       theme: _buildLightTheme(),
       darkTheme: _buildDarkTheme(),
       themeMode: settings.isDarkMode ? ThemeMode.dark : ThemeMode.light,

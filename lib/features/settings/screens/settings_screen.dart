@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../viewmodels/settings_viewmodel.dart';
 import '../widgets/settings_tile.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -12,7 +13,7 @@ class SettingsScreen extends ConsumerWidget {
     final viewModel = ref.read(settingsViewModelProvider.notifier);
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Ayarlar'), elevation: 0.5),
+      appBar: AppBar(title: Text('settings.title'.tr()), elevation: 0.5),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -34,8 +35,8 @@ class SettingsScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   SettingsTile(
-                    title: 'Karanlık Tema',
-                    subtitle: 'Uygulamayı karanlık temada kullan',
+                    title: 'settings.dark_mode'.tr(),
+                    subtitle: 'settings.dark_mode.subtitle'.tr(),
                     icon: Icons.dark_mode,
                     trailing: Switch(
                       value: settings.isDarkMode,
@@ -44,8 +45,31 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   const Divider(height: 1),
                   SettingsTile(
-                    title: 'Bildirimler',
-                    subtitle: 'Formül hatırlatıcıları al',
+                    title: 'settings.language'.tr(),
+                    subtitle: 'settings.language.subtitle'.tr(),
+                    icon: Icons.language,
+                    trailing: DropdownButton<Locale>(
+                      value: context.locale,
+                      underline: const SizedBox.shrink(),
+                      onChanged: (loc) {
+                        if (loc != null) context.setLocale(loc);
+                      },
+                      items: [
+                        DropdownMenuItem(
+                          value: const Locale('tr'),
+                          child: Text('settings.language.tr'.tr()),
+                        ),
+                        DropdownMenuItem(
+                          value: const Locale('en'),
+                          child: Text('settings.language.en'.tr()),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Divider(height: 1),
+                  SettingsTile(
+                    title: 'settings.notifications'.tr(),
+                    subtitle: 'settings.notifications.subtitle'.tr(),
                     icon: Icons.notifications,
                     trailing: Switch(
                       value: settings.notificationsEnabled,
@@ -54,8 +78,8 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   const Divider(height: 1),
                   SettingsTile(
-                    title: 'Otomatik Kaydet',
-                    subtitle: 'Favorileri otomatik kaydet',
+                    title: 'settings.autosave'.tr(),
+                    subtitle: 'settings.autosave.subtitle'.tr(),
                     icon: Icons.save,
                     trailing: Switch(
                       value: settings.autoSave,
@@ -74,15 +98,15 @@ class SettingsScreen extends ConsumerWidget {
               child: Column(
                 children: [
                   SettingsTile(
-                    title: 'Uygulama Hakkında',
-                    subtitle: 'Versiyon ve lisans bilgileri',
+                    title: 'settings.about'.tr(),
+                    subtitle: 'settings.about.subtitle'.tr(),
                     icon: Icons.info,
                     onTap: () => _showAboutDialog(context),
                   ),
                   const Divider(height: 1),
                   SettingsTile(
-                    title: 'Verileri Temizle',
-                    subtitle: 'Tüm yerel verileri sil',
+                    title: 'settings.clear'.tr(),
+                    subtitle: 'settings.clear.subtitle'.tr(),
                     icon: Icons.delete_forever,
                     onTap: () => _showClearDataDialog(context, viewModel),
                   ),

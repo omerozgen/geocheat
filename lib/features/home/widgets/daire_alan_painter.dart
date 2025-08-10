@@ -46,13 +46,7 @@ class _DaireAlanPainter extends CustomPainter {
       Offset(center.dx + radius / 2 + 4, center.dy - 18),
       textStyle,
     );
-    // Alan etiketi
-    _drawText(
-      canvas,
-      'Alan',
-      center.translate(-18, 0),
-      TextStyle(fontSize: 14, color: Colors.pink),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

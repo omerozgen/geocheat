@@ -50,13 +50,7 @@ class _KureHacimPainter extends CustomPainter {
     final textStyle = TextStyle(color: Colors.black, fontSize: 15);
     // r: sağa
     _drawText(canvas, 'r', Offset(cx + r / 2, cy - 18), textStyle);
-    // Hacim etiketi
-    _drawText(
-      canvas,
-      'Hacim',
-      Offset(cx - 18, cy + 8),
-      textStyle.copyWith(fontSize: 14, color: Colors.green),
-    );
+    // Removed textual label
   }
 
   void _drawText(Canvas canvas, String text, Offset pos, TextStyle style) {

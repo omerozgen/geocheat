@@ -4,6 +4,7 @@ import '../../viewmodels/favorites_viewmodel.dart';
 import 'package:geocheat/core/constants/categories.dart';
 import '../category/formula_detail_screen.dart';
 import 'package:flutter_math_fork/flutter_math.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class FavoritesScreen extends ConsumerWidget {
   const FavoritesScreen({super.key});
@@ -15,7 +16,7 @@ class FavoritesScreen extends ConsumerWidget {
         .where((f) => favoriteIds.contains(f.id))
         .toList();
     return Scaffold(
-      appBar: AppBar(title: const Text('Favorilerim'), elevation: 0.5),
+      appBar: AppBar(title: Text('favorites.title'.tr()), elevation: 0.5),
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -38,7 +39,7 @@ class FavoritesScreen extends ConsumerWidget {
                     ),
                     const SizedBox(height: 16),
                     Text(
-                      'Henüz favori formül yok.',
+                      'favorites.empty'.tr(),
                       style: TextStyle(
                         fontSize: 18,
                         color: Theme.of(context).brightness == Brightness.dark
@@ -108,7 +109,10 @@ class FavoritesScreen extends ConsumerWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    formula.title,
+                                    tr('formulas.${formula.id}.title') ==
+                                            'formulas.${formula.id}.title'
+                                        ? formula.title
+                                        : tr('formulas.${formula.id}.title'),
                                     style: const TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
