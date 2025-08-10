@@ -19,10 +19,11 @@ class _EskenarUcgenAlanPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final double margin = size.width * 0.18;
     final double base = size.width * 0.64;
-    final double height = size.height * 0.56;
+    final double height =
+        base * 0.866; // Eşkenar üçgen için doğru yükseklik: a * √3/2
     final Offset a = Offset(margin, size.height - margin);
     final Offset b = Offset(margin + base, size.height - margin);
-    final Offset c = Offset(size.width / 2, size.height - margin - height);
+    final Offset c = Offset(margin + base / 2, size.height - margin - height);
 
     final trianglePaint = Paint()
       ..color = Colors.teal.withOpacity(0.18)

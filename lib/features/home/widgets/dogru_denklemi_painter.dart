@@ -41,9 +41,11 @@ class _DogruDenklemiPainter extends CustomPainter {
     final xEnd = x1;
     final yStart = y0 - n;
     final yEnd = y0 - (m * (xEnd - xStart) + n);
+
+    // Doğru çizgisi daha kalın
     final linePaint = Paint()
       ..color = Colors.blue
-      ..strokeWidth = 3;
+      ..strokeWidth = 4; // Daha kalın çizgi
     canvas.drawLine(Offset(xStart, yStart), Offset(xEnd, yEnd), linePaint);
 
     // y-kesişim noktası

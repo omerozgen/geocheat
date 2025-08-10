@@ -16,8 +16,8 @@ class _KureHacimPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final double cx = size.width / 2;
     final double cy = size.height / 2;
-    final double r = size.width * 0.34;
-    final double eqRy = size.height * 0.13;
+    final double r = size.width * 0.35; // Biraz daha büyük küre için
+    final double eqRy = size.height * 0.14; // Ekvator elipsi için
 
     // Küre ana dairesi
     final mainCircle = Paint()

@@ -37,8 +37,8 @@ class _ElipsDenklemiPainter extends CustomPainter {
     // Elips merkezi (h, k), büyük yarı eksen a, küçük yarı eksen b
     final double h0 = x0 + (x1 - x0) * 0.55;
     final double k0 = y0 - (y0 - y1) * 0.45;
-    final double a = (x1 - x0) * 0.32;
-    final double b = (y0 - y1) * 0.22;
+    final double a = (x1 - x0) * 0.33; // Biraz daha büyük elips için
+    final double b = (y0 - y1) * 0.23; // Biraz daha büyük elips için
     final center = Offset(h0, k0);
 
     // Elips

@@ -16,15 +16,23 @@ class _KupHacimPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // 3D izlenimi için önden ve arkadan iki kare ve bağlantı çizgileri
     final double offset = size.width * 0.18;
-    final double side = size.width * 0.5;
+    final double side = size.width * 0.45;
+    final double depth = size.width * 0.25;
+
+    // Ön yüz (daha büyük)
     final frontTopLeft = Offset(offset, offset);
     final frontTopRight = Offset(offset + side, offset);
     final frontBottomLeft = Offset(offset, offset + side);
     final frontBottomRight = Offset(offset + side, offset + side);
-    final backTopLeft = Offset(offset + 30, offset - 30);
-    final backTopRight = Offset(offset + side + 30, offset - 30);
-    final backBottomLeft = Offset(offset + 30, offset + side - 30);
-    final backBottomRight = Offset(offset + side + 30, offset + side - 30);
+
+    // Arka yüz (daha küçük ve yukarıda)
+    final backTopLeft = Offset(offset + depth, offset - depth * 0.3);
+    final backTopRight = Offset(offset + depth + side, offset - depth * 0.3);
+    final backBottomLeft = Offset(offset + depth, offset + side - depth * 0.3);
+    final backBottomRight = Offset(
+      offset + depth + side,
+      offset + side - depth * 0.3,
+    );
 
     // Alanı taralı göster (küpün ön yüzü)
     final areaPaint = Paint()

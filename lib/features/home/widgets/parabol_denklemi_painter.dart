@@ -39,7 +39,8 @@ class _ParabolDenklemiPainter extends CustomPainter {
     final h0 = 0.0;
     final k0 = 40.0;
     final points = <Offset>[];
-    for (double x = x0; x <= x1; x += 1) {
+    for (double x = x0; x <= x1; x += 0.5) {
+      // Daha pürüzsüz çizim için daha küçük adım
       final xp = x - (x0 + x1) / 2;
       final y = y0 - (a * pow(xp - h0, 2) + k0);
       points.add(Offset(x, y));

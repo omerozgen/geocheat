@@ -54,6 +54,57 @@ import '../../widgets/eskenar_dortgen_cevresi_painter.dart';
 import '../../widgets/besgen_cevresi_painter.dart';
 import '../../widgets/altigen_cevresi_painter.dart';
 import '../../widgets/ngon_cevresi_painter.dart';
+import '../../widgets/kup_kosedegen_painter.dart';
+import '../../widgets/kup_yuzey_alan_painter.dart';
+import '../../widgets/dikdortgenler_prizmasi_kosedegen_painter.dart';
+import '../../widgets/dikdortgenler_prizmasi_taban_alan_painter.dart';
+import '../../widgets/dikdortgenler_prizmasi_yan_alan_painter.dart';
+import '../../widgets/silindir_taban_alan_painter.dart';
+import '../../widgets/silindir_yan_alan_painter.dart';
+import '../../widgets/silindir_cap_painter.dart';
+import '../../widgets/silindir_yukseklik_painter.dart';
+import '../../widgets/silindir_yaricap_painter.dart';
+import '../../widgets/koni_taban_alan_painter.dart';
+import '../../widgets/koni_yan_alan_painter.dart';
+import '../../widgets/koni_cap_painter.dart';
+import '../../widgets/koni_yukseklik_painter.dart';
+import '../../widgets/koni_yaricap_painter.dart';
+import '../../widgets/koni_egik_kenar_painter.dart';
+import '../../widgets/kure_cap_painter.dart';
+import '../../widgets/kure_yaricap_painter.dart';
+import '../../widgets/kure_dilim_painter.dart';
+import '../../widgets/kure_kesit_painter.dart';
+import '../../widgets/kare_kosedegen_painter.dart';
+import '../../widgets/kare_kenar_painter.dart';
+import '../../widgets/kare_ic_cember_painter.dart';
+import '../../widgets/kare_dis_cember_painter.dart';
+import '../../widgets/dikdortgen_kosedegen_painter.dart';
+import '../../widgets/dikdortgen_kenar_painter.dart';
+import '../../widgets/dikdortgen_dis_cember_painter.dart';
+import '../../widgets/paralelkenar_kosedegen_painter.dart';
+import '../../widgets/paralelkenar_yukseklik_painter.dart';
+import '../../widgets/paralelkenar_kenar_painter.dart';
+import '../../widgets/paralelkenar_aci_painter.dart';
+import '../../widgets/yamuk_yukseklik_painter.dart';
+import '../../widgets/yamuk_taban_painter.dart';
+import '../../widgets/yamuk_orta_taban_painter.dart';
+import '../home/home_screen.dart';
+import '../../widgets/eskenar_dortgen_kosedegen_painter.dart';
+import '../../widgets/eskenar_dortgen_yukseklik_painter.dart';
+import '../../widgets/eskenar_dortgen_kenar_painter.dart';
+import '../../widgets/eskenar_dortgen_aci_painter.dart';
+import '../../widgets/besgen_kenar_painter.dart';
+import '../../widgets/besgen_ic_aci_painter.dart';
+import '../../widgets/besgen_dis_aci_painter.dart';
+import '../../widgets/besgen_apotem_painter.dart';
+import '../../widgets/besgen_dis_cember_painter.dart';
+import '../../widgets/besgen_ic_cember_painter.dart';
+import '../../widgets/altigen_kenar_painter.dart';
+import '../../widgets/altigen_ic_aci_painter.dart';
+import '../../widgets/altigen_dis_aci_painter.dart';
+import '../../widgets/altigen_apotem_painter.dart';
+import '../../widgets/altigen_dis_cember_painter.dart';
+import '../../widgets/altigen_ic_cember_painter.dart';
 
 class FormulaDetailScreen extends ConsumerWidget {
   final Formula formula;
@@ -257,6 +308,14 @@ class FormulaDetailScreen extends ConsumerWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (formula.categoryId == 'right_triangle' ||
+                      formula.categoryId == 'equilateral_triangle' ||
+                      formula.categoryId == 'isosceles_triangle')
+                    const Center(child: TriangleIcon(size: 64)),
+                  if (formula.categoryId == 'right_triangle' ||
+                      formula.categoryId == 'equilateral_triangle' ||
+                      formula.categoryId == 'isosceles_triangle')
+                    const SizedBox(height: 16),
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(
@@ -539,6 +598,259 @@ class FormulaDetailScreen extends ConsumerWidget {
                   ],
                   if (isNgonCevre) ...[
                     Center(child: NgonCevresiPainter(size: 180, n: 7)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f22a') ...[
+                    _FormulaVisualCard(child: KupKosedegenPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f22d') ...[
+                    _FormulaVisualCard(child: KupYuzeyAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f22b' || formula.id == 'f22c') ...[
+                    _FormulaVisualCard(child: KupHacimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f61a') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenlerPrizmasiKosedegenPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f61d') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenlerPrizmasiTabanAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f61e') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenlerPrizmasiYanAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f25a') ...[
+                    _FormulaVisualCard(
+                      child: SilindirTabanAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f25b') ...[
+                    _FormulaVisualCard(
+                      child: SilindirYanAlanPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f25c') ...[
+                    _FormulaVisualCard(child: SilindirCapPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f25d') ...[
+                    _FormulaVisualCard(
+                      child: SilindirYukseklikPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f25e' || formula.id == 'f25f') ...[
+                    _FormulaVisualCard(
+                      child: SilindirYaricapPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62a') ...[
+                    _FormulaVisualCard(child: KoniTabanAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62b') ...[
+                    _FormulaVisualCard(child: KoniYanAlanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62c') ...[
+                    _FormulaVisualCard(child: KoniCapPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62d') ...[
+                    _FormulaVisualCard(child: KoniYukseklikPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62e' || formula.id == 'f62f') ...[
+                    _FormulaVisualCard(child: KoniYaricapPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f62g') ...[
+                    _FormulaVisualCard(child: KoniEgikKenarPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f28a') ...[
+                    _FormulaVisualCard(child: KureCapPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f28b' || formula.id == 'f28c') ...[
+                    _FormulaVisualCard(child: KureYaricapPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f28d') ...[
+                    _FormulaVisualCard(child: KureDilimPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f28e') ...[
+                    _FormulaVisualCard(child: KureKesitPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f8a') ...[
+                    _FormulaVisualCard(child: KareKosedegenPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f8b' ||
+                      formula.id == 'f8c' ||
+                      formula.id == 'f8d') ...[
+                    _FormulaVisualCard(child: KareKenarPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f8e') ...[
+                    _FormulaVisualCard(child: KareIcCemberPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f8f') ...[
+                    _FormulaVisualCard(child: KareDisCemberPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f10a') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenKosedegenPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f10b' ||
+                      formula.id == 'f10c' ||
+                      formula.id == 'f10d') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenKenarPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f10e') ...[
+                    _FormulaVisualCard(
+                      child: DikdortgenDisCemberPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f50a' || formula.id == 'f50b') ...[
+                    _FormulaVisualCard(
+                      child: ParalelkenarKosedegenPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f50c') ...[
+                    _FormulaVisualCard(
+                      child: ParalelkenarYukseklikPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f50d' || formula.id == 'f50e') ...[
+                    _FormulaVisualCard(
+                      child: ParalelkenarKenarPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f50f') ...[
+                    _FormulaVisualCard(
+                      child: ParalelkenarAciPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f51a') ...[
+                    _FormulaVisualCard(child: YamukYukseklikPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f51b') ...[
+                    _FormulaVisualCard(child: YamukTabanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f51c') ...[
+                    _FormulaVisualCard(child: YamukOrtaTabanPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f52a' ||
+                      formula.id == 'f52d' ||
+                      formula.id == 'f52e' ||
+                      formula.id == 'f52f') ...[
+                    _FormulaVisualCard(
+                      child: EskenarDortgenKosedegenPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f52b') ...[
+                    _FormulaVisualCard(
+                      child: EskenarDortgenYukseklikPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f52c') ...[
+                    _FormulaVisualCard(
+                      child: EskenarDortgenKenarPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f52g') ...[
+                    _FormulaVisualCard(
+                      child: EskenarDortgenAciPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53a' || formula.id == 'f53b') ...[
+                    _FormulaVisualCard(child: BesgenKenarPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53c') ...[
+                    _FormulaVisualCard(child: BesgenIcAciPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53d') ...[
+                    _FormulaVisualCard(child: BesgenDisAciPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53e') ...[
+                    _FormulaVisualCard(child: BesgenApotemPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53f') ...[
+                    _FormulaVisualCard(
+                      child: BesgenDisCemberPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f53g') ...[
+                    _FormulaVisualCard(child: BesgenIcCemberPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54a' || formula.id == 'f54b') ...[
+                    _FormulaVisualCard(child: AltigenKenarPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54c') ...[
+                    _FormulaVisualCard(child: AltigenIcAciPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54d') ...[
+                    _FormulaVisualCard(child: AltigenDisAciPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54e') ...[
+                    _FormulaVisualCard(child: AltigenApotemPainter(size: 180)),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54f') ...[
+                    _FormulaVisualCard(
+                      child: AltigenDisCemberPainter(size: 180),
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                  if (formula.id == 'f54g') ...[
+                    _FormulaVisualCard(
+                      child: AltigenIcCemberPainter(size: 180),
+                    ),
                     const SizedBox(height: 16),
                   ],
                   // LaTeX formül kutusu

@@ -5,6 +5,7 @@ import '../../../../core/constants/categories.dart';
 import '../../models/formula.dart';
 import 'formula_detail_screen.dart';
 import '../../viewmodels/favorites_viewmodel.dart';
+import '../home/home_screen.dart';
 
 class FormulaListScreen extends ConsumerWidget {
   final String categoryId;
@@ -12,6 +13,7 @@ class FormulaListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Lazy loading için formülleri filtrele
     final List<Formula> filteredFormulas = formulas
         .where((f) => f.categoryId == categoryId)
         .toList();
@@ -73,6 +75,14 @@ class FormulaListScreen extends ConsumerWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      if (categoryId == 'right_triangle' ||
+                          categoryId == 'equilateral_triangle' ||
+                          categoryId == 'isosceles_triangle')
+                        const TriangleIcon(size: 36),
+                      if (categoryId == 'right_triangle' ||
+                          categoryId == 'equilateral_triangle' ||
+                          categoryId == 'isosceles_triangle')
+                        const SizedBox(width: 12),
                       Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

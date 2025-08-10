@@ -21,7 +21,7 @@ class _SilindirHacimPainter extends CustomPainter {
     final double topY = size.height * 0.22;
     final double bottomY = size.height * 0.78;
     final double rx = size.width * 0.28;
-    final double ry = size.height * 0.11;
+    final double ry = size.height * 0.12; // Biraz daha büyük elips için
 
     // Alt ve üst elipsler
     final topRect = Rect.fromCenter(

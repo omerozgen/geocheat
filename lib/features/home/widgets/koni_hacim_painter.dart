@@ -18,7 +18,7 @@ class _KoniHacimPainter extends CustomPainter {
     final double baseY = size.height * 0.78;
     final double topY = size.height * 0.22;
     final double rx = size.width * 0.28;
-    final double ry = size.height * 0.11;
+    final double ry = size.height * 0.12; // Biraz daha büyük taban için
 
     // Taban elipsi
     final baseRect = Rect.fromCenter(

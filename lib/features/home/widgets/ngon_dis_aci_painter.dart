@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'dart:math';
+
+class NgonDisAciPainter extends StatelessWidget {
+  final double size;
+  const NgonDisAciPainter({this.size = 180, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomPaint(size: Size(size, size), painter: _NgonDisAciPainter());
+  }
+}
+
+class _NgonDisAciPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final n = 7;
+    final r = size.width * 0.38;
+    final center = Offset(size.width / 2, size.height / 2);
+    final paint = Paint()
+      ..color = Colors.blueAccent
+      ..strokeWidth = 2.5
+      ..style = PaintingStyle.stroke;
+    final anglePaint = Paint()
+      ..color = Colors.orange
+      ..strokeWidth = 3
+      ..style = PaintingStyle.stroke;
+    List<Offset> points = [];
+    for (int i = 0; i < n; i++) {
+      double angle = (2 * pi * i) / n - pi / 2;
+      points.add(center + Offset(r * cos(angle), r * sin(angle)));
+    }
+    // Çokgeni çiz
+    for (int i = 0; i < n; i++) {
+      canvas.drawLine(points[i], points[(i + 1) % n], paint);
+    }
+    // Dış açı yayını çiz (ilk köşe)
+    final p0 = points[0];
+    final p1 = points[1];
+    final pPrev = points[n - 1];
+    final v1 = (p1 - p0).direction;
+    final v2 = (pPrev - p0).direction;
+    final extAngle = 2 * pi / n;
+    final arcRect = Rect.fromCircle(center: p0, radius: size.width * 0.18);
+    canvas.drawArc(arcRect, v2, -extAngle, false, anglePaint);
+    // Açıya 'β' harfi
+    final textPainter = TextPainter(
+      text: const TextSpan(
+        text: 'β',
+        style: TextStyle(
+          color: Colors.orange,
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      textDirection: TextDirection.ltr,
+    )..layout();
+    final labelOffset = p0 + Offset(30, -8);
+    textPainter.paint(canvas, labelOffset);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}

@@ -13,10 +13,13 @@ class DikUcgenAlanPainter extends StatelessWidget {
 class _DikUcgenAlanPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
-    // Üçgenin köşeleri
+    // Üçgenin köşeleri - dik üçgen için daha doğru açı
     final left = Offset(size.width * 0.15, size.height * 0.85);
     final right = Offset(size.width * 0.85, size.height * 0.85);
-    final top = Offset(size.width * 0.15, size.height * 0.15);
+    final top = Offset(
+      size.width * 0.15,
+      size.height * 0.25,
+    ); // Daha dik açı için yükseklik artırıldı
 
     // Alanı taralı göster (üçgenin içi)
     final areaPaint = Paint()
@@ -86,4 +89,3 @@ class _DikUcgenAlanPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
- 
