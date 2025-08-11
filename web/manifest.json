@@ -1,6 +1,6 @@
 {
-    "name": "geocheat",
-    "short_name": "geocheat",
+    "name": "GeoCheat",
+    "short_name": "GeoCheat",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",

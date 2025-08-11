@@ -1,4 +1,4 @@
-package com.example.geocheat
+package com.omerozgen.geocheat
 
 import io.flutter.embedding.android.FlutterActivity
 

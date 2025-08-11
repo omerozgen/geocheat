@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "geocheat" "\0"
+            VALUE "FileDescription", "GeoCheat" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "geocheat" "\0"
+            VALUE "InternalName", "GeoCheat" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2025 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "geocheat.exe" "\0"
-            VALUE "ProductName", "geocheat" "\0"
+            VALUE "OriginalFilename", "GeoCheat.exe" "\0"
+            VALUE "ProductName", "GeoCheat" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
