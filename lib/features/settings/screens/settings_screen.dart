@@ -51,8 +51,11 @@ class SettingsScreen extends ConsumerWidget {
                     trailing: DropdownButton<Locale>(
                       value: context.locale,
                       underline: const SizedBox.shrink(),
-                      onChanged: (loc) {
-                        if (loc != null) context.setLocale(loc);
+                      onChanged: (loc) async {
+                        if (loc != null) {
+                          await context.setLocale(loc);
+                          await viewModel.setLanguage(loc);
+                        }
                       },
                       items: [
                         DropdownMenuItem(

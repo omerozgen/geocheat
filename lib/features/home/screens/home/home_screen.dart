@@ -4,11 +4,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'dart:ui' as ui;
 import '../../models/category.dart';
 import '../../viewmodels/home_viewmodel.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../category/category_screen.dart';
 import '../favorites/favorites_screen.dart';
 import 'dart:math' as math;
-import '../../../calculator/screens/calculator_screen.dart';
 import '../../../settings/screens/settings_screen.dart';
 // import 'package:auto_size_text/auto_size_text.dart';
 
@@ -144,8 +142,6 @@ class CategoryCard extends StatelessWidget {
       iconWidget = const CubeIcon(size: 56);
     } else if (category.id == 'analytic') {
       iconWidget = const AnalitikIcon(size: 56);
-    } else if (category.id == 'calculator') {
-      iconWidget = const CalculatorIcon(size: 56);
     } else {
       iconWidget = Icon(Icons.category, size: 56, color: Colors.blueAccent);
     }
@@ -161,17 +157,11 @@ class CategoryCard extends StatelessWidget {
           splashColor: Colors.blueAccent.withOpacity(0.08),
           highlightColor: Colors.blueAccent.withOpacity(0.04),
           onTap: () {
-            if (category.id == 'calculator') {
-              Navigator.of(context).push(
-                MaterialPageRoute(builder: (_) => const CalculatorScreen()),
-              );
-            } else {
-              Navigator.of(context).push(
-                MaterialPageRoute(
-                  builder: (_) => CategoryScreen(category: category),
-                ),
-              );
-            }
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (_) => CategoryScreen(category: category),
+              ),
+            );
           },
           child: Container(
             decoration: BoxDecoration(

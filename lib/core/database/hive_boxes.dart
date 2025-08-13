@@ -15,7 +15,8 @@ class HiveBoxes {
     // Kutuları aç
     // Favorites are stored as a simple List<String> under key 'ids'
     await Hive.openBox<List>(favoritesBox);
-    await Hive.openBox<Map<String, dynamic>>(settingsBox);
+    // Settings kutusunu tiplenmemiş aç: eski veriler Map<dynamic,dynamic> olabilir
+    await Hive.openBox(settingsBox);
     await Hive.openBox<Formula>(formulasBox);
   }
 
@@ -23,8 +24,8 @@ class HiveBoxes {
     return Hive.box<List>(favoritesBox);
   }
 
-  static Box<Map<String, dynamic>> getSettingsBox() {
-    return Hive.box<Map<String, dynamic>>(settingsBox);
+  static Box getSettingsBox() {
+    return Hive.box(settingsBox);
   }
 
   static Box<Formula> getFormulasBox() {

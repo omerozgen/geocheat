@@ -10,12 +10,26 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   await Hive.initFlutter();
   await HiveBoxes.init();
+  // Tercih edilen dili Hive'dan oku (varsayılan sistem dili)
+  final settingsBox = HiveBoxes.getSettingsBox();
+  Locale? startLocale;
+  try {
+    final dynamic saved = settingsBox.get('settings');
+    if (saved is Map) {
+      final map = Map<String, dynamic>.from(saved);
+      final code = map['languageCode'];
+      if (code == 'tr') startLocale = const Locale('tr');
+      if (code == 'en') startLocale = const Locale('en');
+    }
+  } catch (_) {}
+
   runApp(
     EasyLocalization(
       supportedLocales: const [Locale('tr'), Locale('en')],
       path: 'assets/translations',
       saveLocale: true,
       fallbackLocale: const Locale('en'),
+      startLocale: startLocale,
       child: const ProviderScope(child: GeoCheatApp()),
     ),
   );

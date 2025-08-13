@@ -8,5 +8,6 @@ final homeViewModelProvider =
     });
 
 class HomeViewModel extends StateNotifier<List<Category>> {
-  HomeViewModel() : super(categories);
+  HomeViewModel()
+    : super(categories.where((c) => c.id != 'calculator').toList());
 }

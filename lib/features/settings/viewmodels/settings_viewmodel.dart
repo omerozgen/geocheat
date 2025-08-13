@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/material.dart' show Locale;
 import 'package:hive_flutter/hive_flutter.dart';
 import '../models/settings.dart';
 import '../../../core/database/hive_boxes.dart';
@@ -10,7 +11,7 @@ final settingsViewModelProvider =
 
 class SettingsViewModel extends StateNotifier<Settings> {
   static const String _boxName = 'settings';
-  late Box<Map<String, dynamic>> _box;
+  late Box _box;
 
   SettingsViewModel() : super(Settings.defaultSettings()) {
     _init();
@@ -23,8 +24,9 @@ class SettingsViewModel extends StateNotifier<Settings> {
 
   Future<void> _loadSettings() async {
     try {
-      final data = _box.get('settings');
-      if (data != null) {
+      final dynamic raw = _box.get('settings');
+      if (raw != null && raw is Map) {
+        final data = Map<String, dynamic>.from(raw as Map);
         // Hive'dan gelen veriyi Settings'e dönüştür
         state = Settings(
           isDarkMode: data['isDarkMode'] ?? false,
@@ -44,6 +46,9 @@ class SettingsViewModel extends StateNotifier<Settings> {
         'isDarkMode': state.isDarkMode,
         'notificationsEnabled': state.notificationsEnabled,
         'autoSave': state.autoSave,
+        'languageCode': (_box.get('settings') is Map)
+            ? (_box.get('settings')['languageCode'])
+            : null,
       });
     } catch (e) {
       // Hata durumunda log yazılabilir
@@ -63,6 +68,16 @@ class SettingsViewModel extends StateNotifier<Settings> {
   void toggleAutoSave() {
     state = state.copyWith(autoSave: !state.autoSave);
     _saveSettings();
+  }
+
+  Future<void> setLanguage(Locale locale) async {
+    try {
+      final current = _box.get('settings') ?? {};
+      current['languageCode'] = locale.languageCode;
+      await _box.put('settings', Map<String, dynamic>.from(current));
+    } catch (e) {
+      // ignore
+    }
   }
 
   Future<void> clearAllData() async {

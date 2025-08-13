@@ -194,37 +194,7 @@ final List<Category> categories = [
       ),
     ],
   ),
-  Category(
-    id: 'calculator',
-    name: 'Hesap Makinesi',
-    iconPath: 'assets/icons/calculator.svg',
-    subcategories: [
-      Category(
-        id: 'basic_ops',
-        name: 'Dört İşlem',
-        iconPath: 'assets/icons/basic_ops.svg',
-        subcategories: [],
-      ),
-      Category(
-        id: 'percent',
-        name: 'Yüzde',
-        iconPath: 'assets/icons/percent.svg',
-        subcategories: [],
-      ),
-      Category(
-        id: 'sqrt',
-        name: 'Karekök',
-        iconPath: 'assets/icons/sqrt.svg',
-        subcategories: [],
-      ),
-      Category(
-        id: 'power',
-        name: 'Üs Alma',
-        iconPath: 'assets/icons/power.svg',
-        subcategories: [],
-      ),
-    ],
-  ),
+  // Hesap makinesi kategorisi kaldırıldı
 ];
 
 final List<Formula> formulas = [
@@ -1036,70 +1006,7 @@ final List<Formula> formulas = [
     categoryId: 'hyperbola',
     isFavorited: false,
   ),
-  // Hesap Makinesi
-  Formula(
-    id: 'f34',
-    title: 'Toplama',
-    description: 'İki sayının toplamı.',
-    formulaText: r'a + b',
-    imagePath: null,
-    categoryId: 'basic_ops',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f35',
-    title: 'Çıkarma',
-    description: 'İki sayının farkı.',
-    formulaText: r'a - b',
-    imagePath: null,
-    categoryId: 'basic_ops',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f36',
-    title: 'Çarpma',
-    description: 'İki sayının çarpımı.',
-    formulaText: r'a \times b',
-    imagePath: null,
-    categoryId: 'basic_ops',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f37',
-    title: 'Bölme',
-    description: 'İki sayının bölümü.',
-    formulaText: r'\frac{a}{b}',
-    imagePath: null,
-    categoryId: 'basic_ops',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f38',
-    title: 'Yüzde Hesaplama',
-    description: 'Bir sayının yüzdesi.',
-    formulaText: r'\frac{a \cdot b}{100}',
-    imagePath: null,
-    categoryId: 'percent',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f39',
-    title: 'Karekök',
-    description: 'Bir sayının karekökü.',
-    formulaText: r'\sqrt{a}',
-    imagePath: null,
-    categoryId: 'sqrt',
-    isFavorited: false,
-  ),
-  Formula(
-    id: 'f40',
-    title: 'Üs Alma',
-    description: 'Bir sayının üssü.',
-    formulaText: r'a^b',
-    imagePath: null,
-    categoryId: 'power',
-    isFavorited: false,
-  ),
+  // Hesap Makinesi formülleri kaldırıldı
   // Üçgenler (Dik Üçgen, Eşkenar Üçgen, İkizkenar Üçgen) için ek formüller
   Formula(
     id: 'f41',

@@ -141,15 +141,6 @@ class CategoryScreen extends StatelessWidget {
                             padding: const EdgeInsets.only(right: 12),
                             child: _getSolidIcon(sub.id),
                           )
-                        else if (category.id == 'calculator' &&
-                            (sub.id == 'basic_ops' ||
-                                sub.id == 'trigonometry' ||
-                                sub.id == 'logarithm' ||
-                                sub.id == 'statistics'))
-                          Padding(
-                            padding: const EdgeInsets.only(right: 12),
-                            child: _getCalculatorIcon(sub.id),
-                          )
                         else if (sub.iconPath.endsWith('.svg'))
                           SizedBox(
                             width: 48,
@@ -288,21 +279,6 @@ class CategoryScreen extends StatelessWidget {
         return const SphereIcon(size: 40);
       default:
         return const CubeIcon(size: 40); // Fallback
-    }
-  }
-
-  Widget _getCalculatorIcon(String subId) {
-    switch (subId) {
-      case 'basic_ops':
-        return const BasicOpsIcon(size: 40);
-      case 'trigonometry':
-        return const TrigonometryIcon(size: 40);
-      case 'logarithm':
-        return const LogarithmIcon(size: 40);
-      case 'statistics':
-        return const StatisticsIcon(size: 40);
-      default:
-        return const CalculatorIcon(size: 40); // Fallback
     }
   }
 }
